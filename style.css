@@ -1,0 +1,26 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    padding-top: 56px; /* 导航栏高度 */
+}
+
+.hero-section {
+    background: linear-gradient(135deg, #0073e6, #00c6ff);
+    color: white;
+    padding: 100px 0;
+}
+
+.card {
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.bg-light {
+    background-color: #f8f9fa !important;
+}
+
+.shadow-sm {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
