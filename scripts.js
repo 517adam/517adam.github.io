@@ -1,4 +1,9 @@
-// 这里可以添加一些交互功能
-document.addEventListener('DOMContentLoaded', function () {
-    console.log('页面加载完成！');
+// 添加平滑滚动效果
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
 });
