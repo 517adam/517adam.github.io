@@ -3,30 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>学习笔记</title>
-    <link rel="stylesheet" href="../styles.css">
+    <title>我的个人主页</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>学习笔记</h1>
+        <h1>欢迎来到我的个人主页</h1>
         <nav>
             <ul>
-                <li><a href="../index.html">返回主页</a></li>
+                <li><a href="#about">关于我</a></li>
+                <li><a href="#education">教育经历</a></li>
+                <li><a href="#projects">项目经历</a></li>
+                <li><a href="#contact">联系方式</a></li>
+                <li><a href="blog/index.html">博客随笔</a></li>
+                <li><a href="notes/index.html">学习笔记</a></li>
             </ul>
         </nav>
     </header>
 
-    <section>
-        <h2>我的学习笔记</h2>
+    <section id="about">
+        <h2>关于我</h2>
+        <p>你好！我是一名热爱技术和学习的开发者，专注于网页开发和数据分析。</p>
+        <p>我热衷于探索新技术，并将它们应用到实际项目中。</p>
+    </section>
+
+    <section id="education">
+        <h2>教育经历</h2>
         <ul>
-            <li><a href="#">JavaScript 笔记</a></li>
-            <li><a href="#">Python 笔记</a></li>
-            <li><a href="#">数据结构与算法</a></li>
+            <li>
+                <h3>某某大学</h3>
+                <p>计算机科学与技术 | 本科 | 2018-2022</p>
+            </li>
+            <li>
+                <h3>某某高中</h3>
+                <p>理科 | 2015-2018</p>
+            </li>
+        </ul>
+    </section>
+
+    <section id="projects">
+        <h2>项目经历</h2>
+        <ul>
+            <li>
+                <h3>个人博客系统</h3>
+                <p>使用Django开发的个人博客系统，支持文章发布和评论功能。</p>
+            </li>
+            <li>
+                <h3>在线学习平台</h3>
+                <p>一个基于React和Node.js的在线学习平台，提供课程管理和学习进度跟踪功能。</p>
+            </li>
+        </ul>
+    </section>
+
+    <section id="contact">
+        <h2>联系方式</h2>
+        <ul>
+            <li>Email: example@example.com</li>
+            <li>电话: 123-456-7890</li>
+            <li>GitHub: <a href="https://github.com/yourusername" target="_blank">github.com/yourusername</a></li>
+            <li>LinkedIn: <a href="https://linkedin.com/in/yourusername" target="_blank">linkedin.com/in/yourusername</a></li>
         </ul>
     </section>
 
     <footer>
-        <p>&copy; 2025 我的个人主页. 保留所有权利。</p>
+        <p>&copy; 2023 我的个人主页. 保留所有权利。</p>
     </footer>
+
+    <script src="scripts.js"></script>
 </body>
 </html>
