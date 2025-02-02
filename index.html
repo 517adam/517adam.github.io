@@ -3,28 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的个人主页</title>
+    <title data-i18n="nav.title">我的个人主页</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var navbarHeight = document.querySelector('.navbar').offsetHeight;
+            document.body.style.paddingTop = navbarHeight + 'px';
+        });
+    </script>
 </head>
 <body>
     <!-- 导航栏 -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#">我的主页</a>
+            <a class="navbar-brand" href="#" data-i18n="nav.title2">我的主页</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#about">关于我</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#education">教育经历</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#projects">项目经历</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">联系方式</a></li>
-                    <li class="nav-item"><a class="nav-link" href="blog/index.html">博客</a></li>
-                    <li class="nav-item"><a class="nav-link" href="notes/index.html">笔记</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about" data-i18n="nav.info">关于我</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#education" data-i18n="nav.edu">教育经历</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects" data-i18n="nav.proj">项目经历</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact" data-i18n="nav.contact">联系方式</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blog/index.html" data-i18n="nav.blog">博客</a></li>
+                    <li class="nav-item"><a class="nav-link" href="notes/index.html" data-i18n="nav.notes">笔记</a></li>
+                    <li class="nav-item">
+                        <button class="btn btn-outline-light" onclick="toggleLanguage()" id="langToggle">EN</button>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -33,18 +42,18 @@
     <!-- 头部 -->
     <header class="hero-section">
         <div class="container text-center">
-            <h1 class="display-4">欢迎来到我的个人主页</h1>
-            <p class="lead">探索我的世界，了解我的故事</p>
+            <h1 class="display-4" data-i18n="header.welcome">欢迎来到我的个人主页</h1>
+            <p class="lead" data-i18n="header.construction">网页施工中........</p>
         </div>
     </header>
 
     <!-- 关于我 -->
     <section id="about" class="py-5">
         <div class="container">
-            <h2 class="text-center mb-4">关于我</h2>
+            <h2 class="text-center mb-4" data-i18n="about.title">关于我</h2>
             <div class="row">
                 <div class="col-md-6">
-                    <p>你好！我是一名热爱技术和学习的开发者，专注于网页开发和数据分析。</p>
+                    <p data-i18n="about.description">你好！正在练习搭建一个网页喵~</p>
                 </div>
                 <div class="col-md-6">
                     <img src="assets/images/profile.jpg" alt="我的照片" class="img-fluid rounded-circle">
@@ -56,21 +65,38 @@
     <!-- 教育经历 -->
     <section id="education" class="py-5 bg-light">
         <div class="container">
-            <h2 class="text-center mb-4">教育经历</h2>
+            <h2 class="text-center mb-4" data-i18n="education.title">教育经历</h2>
             <div class="row">
                 <div class="col-md-4">
                     <div class="card mb-4 shadow-sm">
                         <div class="card-body">
-                            <h5 class="card-title">某某大学</h5>
-                            <p class="card-text">计算机科学与技术 | 本科 | 2018-2022</p>
+                            <h5 class="card-title" data-i18n="education.university">香港科技大学</h5>
+                            <p class="card-text" data-i18n="education.major">计算机科学与技术+数学（应用数学） | 本科 | 2023-</p>
+                            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" 
+                                    data-bs-target="#courseList" aria-expanded="false" aria-controls="courseList" data-i18n="education.courses">
+                                查看课程
+                            </button>
+                            <div class="collapse mt-3" id="courseList">
+                                <div class="card card-body">
+                                    <h6 data-i18n="education.completed">已修课程：</h6>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">COMP 2011&2012 - Introduction to Computer Science</li>
+                                        <li class="list-group-item">COMP 2211 - Exploring Artificial Intelligence</li>
+                                        <li class="list-group-item">MATH 1013&1014,2023 - Calculus IB,IIB,Multivariable Calculus</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="card mb-4 shadow-sm">
                         <div class="card-body">
-                            <h5 class="card-title">某某高中</h5>
-                            <p class="card-text">理科 | 2015-2018</p>
+                            <h5 class="card-title" data-i18n="education.school">合肥一中</h5>
+                            <p class="card-text">
+                                <span data-i18n="education.schoolMajor">理科</span> | 
+                                <span data-i18n="education.schoolYear">2020-2023</span>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -81,12 +107,12 @@
     <!-- 项目经历 -->
     <section id="projects" class="py-5">
         <div class="container">
-            <h2 class="text-center mb-4">项目经历</h2>
+            <h2 class="text-center mb-4" data-i18n="projects.title">项目经历</h2>
             <div class="row">
                 <div class="col-md-4">
                     <div class="card mb-4 shadow-sm">
                         <div class="card-body">
-                            <h5 class="card-title">个人博客系统</h5>
+                            <h5 class="card-title" data-i18n="projects.project1">个人博客系统</h5>
                             <p class="card-text">使用Django开发的个人博客系统，支持文章发布和评论功能。</p>
                         </div>
                     </div>
@@ -94,8 +120,8 @@
                 <div class="col-md-4">
                     <div class="card mb-4 shadow-sm">
                         <div class="card-body">
-                            <h5 class="card-title">在线学习平台</h5>
-                            <p class="card-text">基于React和Node.js的在线学习平台，提供课程管理和学习进度跟踪功能。</p>
+                            <h5 class="card-title" data-i18n="projects.project2">本科生科研计划（UROP）</h5>
+                            <p class="card-text" data-i18n="projects.project2c">一种基于多模态transformer的癌症预后生存分析</p>
                         </div>
                     </div>
                 </div>
@@ -110,10 +136,10 @@
             <div class="row">
                 <div class="col-md-6 mx-auto">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Email: example@example.com</li>
-                        <li class="list-group-item">电话: 123-456-7890</li>
-                        <li class="list-group-item">GitHub: <a href="https://github.com/yourusername">github.com/yourusername</a></li>
-                        <li class="list-group-item">LinkedIn: <a href="https://linkedin.com/in/yourusername">linkedin.com/in/yourusername</a></li>
+                        <li class="list-group-item">Email: ychenlg@connect.ust.hk</li>
+                        <li class="list-group-item" data-i18n="contact.tel">电话: +852 53945058</li>
+                        <li class="list-group-item">GitHub: <a href="https://github.com/517adam">github.com/517adam</a></li>
+                    <li class="list-group-item">LinkedIn: <a href="https://linkedin.com/in/yourusername">没有领英喵~</a></li>
                     </ul>
                 </div>
             </div>
@@ -122,10 +148,91 @@
 
     <!-- 页脚 -->
     <footer class="bg-dark text-white text-center py-3">
-        <p>&copy; 2023 我的个人主页. 保留所有权利。</p>
+        <p>&copy; 2025 我的个人主页. 保留所有权利。</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="scripts.js"></script>
+    <script>
+        const languages = {
+            'zh': {
+                'nav.title': '我的个人主页',
+                'nav.title2': '我的主页',
+                'nav.blog': '博客',
+                'nav.notes': '笔记',
+                'nav.info': '关于我',
+                'nav.edu': '教育经历',
+                'nav.proj': '项目经历',
+                'header.welcome': '欢迎来到我的个人主页',
+                'header.construction': '网页施工中........',
+                'about.title': '关于我',
+                'about.description': '你好！正在练习搭建一个网页喵~',
+                'education.title': '教育经历',
+                'education.university': '香港科技大学',
+                'education.major': '计算机科学与技术+数学（应用数学）',
+                'education.degree': '本科',
+                'education.year': '2023-',
+                'education.courses': '查看课程',
+                'education.completed': '已修课程：',
+                'education.school': '合肥一中',
+                'education.schoolMajor': '理科',
+                'education.schoolYear': '2020-2023',
+                'projects.title': '项目经历',
+                'projects.project1': '个人博客系统',
+                'projects.project2': '本科生科研计划（UROP）',
+                'projects.project2c': '一种基于多模态transformer的癌症预后生存分析',
+                'contact.tel': '电话: +852 53945058'
+                // 添加更多中文翻译
+            },
+            'en': {
+                'nav.title': 'My Personal Website',
+                'nav.title2': 'Homepage',
+                'nav.blog': 'Blog',
+                'nav.notes': 'Notes',
+                'nav.info': 'About Me',
+                'nav.edu': 'Education',
+                'nav.proj': 'Projects',
+                'header.welcome': 'Welcome to My Personal Website',
+                'header.construction': 'Website Under Construction........',
+                'about.title': 'About Me',
+                'about.description': 'Hello! I am practicing building a website~',
+                'education.title': 'Education',
+                'education.university': 'HKUST',
+                'education.major': 'Computer Science and Mathematics (Applied Mathematics)',
+                'education.degree': 'Undergraduate',
+                'education.year': '2023-',
+                'education.courses': 'View Courses',
+                'education.completed': 'Completed Courses:',
+                'education.school': 'Hefei No.1 High School',
+                'education.schoolMajor': 'Science',
+                'education.schoolYear': '2020-2023',
+                'projects.title': 'Projects',
+                'projects.project1': 'Personal Blog System',
+                'projects.project2': 'Undergraduate Research Opportunities Program (UROP)',
+                'projects.project2c': 'A multimodal transformer-based cancer prognosis survival analysis',
+                'contact.tel': 'Tel: +852 53945058'
+                // 添加更多英文翻译
+            }
+        };
+
+        let currentLang = 'zh';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'zh' ? 'en' : 'zh';
+            document.getElementById('langToggle').textContent = currentLang === 'zh' ? 'EN' : '中';
+            updateContent();
+        }
+
+        function updateContent() {
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                element.textContent = languages[currentLang][key];
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            updateContent();
+        });
+    </script>
 </body>
 </html>

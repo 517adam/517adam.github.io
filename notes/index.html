@@ -4,29 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>学习笔记</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="../styles.css">
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var navbarHeight = document.querySelector('.navbar').offsetHeight;
+            document.body.style.paddingTop = navbarHeight + 'px';
+        });
+    </script>
 </head>
 <body>
-    <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">我的主页</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../notes/index.html">学习笔记</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../blog/index.html">博客随笔</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="container mt-5 pt-3">
         <h1>学习笔记</h1>
-        <nav>
-            <ul>
-                <li><a href="../index.html">返回主页</a></li>
-            </ul>
-        </nav>
     </header>
 
-    <section>
-        <h2>我的学习笔记</h2>
-        <ul>
-            <li><a href="#">JavaScript 笔记</a></li>
-            <li><a href="#">Python 笔记</a></li>
-            <li><a href="#">数据结构与算法</a></li>
-        </ul>
+    <section class="container my-5">
+        <div class="row g-4">
+            <!-- JavaScript 笔记卡片 -->
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h3 class="card-title">深度学习 笔记</h3>
+                        <p class="card-text">Dive into deeplearning by Li Mu</p>
+                        <a href="#" class="btn btn-primary">阅读更多</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Python 笔记卡片 -->
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h3 class="card-title">cs231n 笔记</h3>
+                        <p class="card-text">尝试学习一些著名的CV课</p>
+                        <a href="#" class="btn btn-primary">阅读更多</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 数据结构与算法卡片 -->
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h3 class="card-title">机器学习 笔记</h3>
+                        <p class="card-text">不想只会调库，试图理解machine learning 后面的数学背景</p>
+                        <a href="#" class="btn btn-primary">阅读更多</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <footer>
+    <footer class="container text-center mt-5">
         <p>&copy; 2025 我的个人主页. 保留所有权利。</p>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
