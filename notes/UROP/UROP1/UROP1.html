@@ -1,0 +1,818 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>UROP</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="40dd479b-79f7-42e4-b8c9-ed48cc85fb66" class="page sans"><header><h1 class="page-title">UROP</h1><p class="page-description"></p></header><div class="page-body"><h3 id="1021035d-5445-8009-a2d1-fc9b4d4d577a" class="">Transformer 学习</h3><ul id="779402a6-8c88-4ba8-9d35-53fef78046ca" class="bulleted-list"><li style="list-style-type:disc">transformer 的功能，优点，缺点，实现，张量形状在层内的流转变化，以及各层的解释</li></ul><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">paper reading</summary><div class="indented"><p id="1031035d-5445-80bb-94ee-fa18c2edca74" class="">
+</p><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Multimodal Co-Attention Transformer for Survival Prediction<br/>in Gigapixel Whole Slide Image<br/></summary><div class="indented"><ul id="df46d13f-a003-4faa-87bc-8e398ffd8983" class="toggle"><li><details open=""><summary>文章摘要： </summary><ol type="1" id="ae89fb87-0f95-484c-86fa-5dedf3bb9212" class="numbered-list" start="1"><li>目标：癌症生存分析，输入是WSI图像</li></ol><ol type="1" id="1031035d-5445-8037-bcf8-f25b74052a16" class="numbered-list" start="2"><li>前置项目：MIL，VQA</li></ol><ol type="1" id="1031035d-5445-80b5-bece-c3d2126693ae" class="numbered-list" start="3"><li>提出了一个MCAT架构，共注意力层减少了WSI层的空间复杂度</li></ol><ol type="1" id="e58ce3f6-9169-406d-b8dc-9c86c6008d39" class="numbered-list" start="4"><li>MIL遇到的问题：在大的bag上进行特征聚合时的计算复杂度大，整合基因组测量等生物学先验数据时的数据异质性差距</li></ol><ol type="1" id="1031035d-5445-8088-a33d-fbd8b3bfd590" class="numbered-list" start="5"><li>共注意力层：将WSI层和genomic features 映射到同一个embedding spaces</li></ol><ol type="1" id="1061035d-5445-801b-8f9a-e1b1f62b5c01" class="numbered-list" start="6"><li>实验：在五个癌症数据集上进行实验</li></ol></details></li></ul><ul id="1061035d-5445-80b3-a4dd-e3cae6867770" class="toggle"><li><details open=""><summary>结论：</summary><ol type="1" id="1061035d-5445-80dd-80bc-df2ddc49a7f7" class="numbered-list" start="1"><li>建立了MCAT进行生存分析，此方法将gigapixel WSI数据和genomic features 作为permutation-invariant sets。使用了transformer 对MIL进行了更精确的特征抽取</li></ol><ol type="1" id="c0335ac1-f291-4e55-b940-a75faaf43203" class="numbered-list" start="2"><li>不足：使用的数据集比较久远，数据可能有重叠。</li></ol></details></li></ul><ul id="1061035d-5445-8019-8c53-f1b0a7305918" class="toggle"><li><details open=""><summary>Introduction</summary></details></li></ul><ol type="1" id="1061035d-5445-8075-a3f3-e9f1a4b829c8" class="numbered-list" start="1"><li>WSI 是一个复杂的问题，与一般的image classification不同，标签不是整张图片有一个清晰切表现良好的。而是 1)  局部的一个像素区域，占总图像的一个小位置。2）<mark class="highlight-brown">跨越整个WSI的组成部分，并依赖于其成分之间的相互作用</mark></li></ol><ol type="1" id="1061035d-5445-803f-b3c5-cdc4899d26a3" class="numbered-list" start="2"><li>由于巨大的像素量，一般采用两步的MIL来表现WSI的学习1） instance level feature representation 从WSI的patches中随机采样得到2）全局聚合方案，得到WSI级的表示。</li></ol><ol type="1" id="1061035d-5445-805a-9cba-d1e89ddea8c3" class="numbered-list" start="3"><li>生存结果预测是有序回归任务。属于细粒度视觉识别问题，需要对各种视觉概念的异质性进行建模，这是MIL无法识别的。</li></ol><ol type="1" id="1061035d-5445-8000-b1e1-ff5855b889cb" class="numbered-list" start="4"><li>生存结果预测被视为一个弱监督任务，仅使用MSIs，但传统上被矿建为一个多模态学习任务，基因组信息作为额外的监督或集成模态</li></ol><ol type="1" id="1061035d-5445-805a-8077-f22f8d968b28" class="numbered-list" start="5"><li>面临的额外挑战：WSI与基因组之间的异质性，许多方法采用后期融合机制进行特征集成，阻碍了最重要的多模态交互学习</li></ol><ol type="1" id="1061035d-5445-80c0-96c1-c0740f3ed81a" class="numbered-list" start="6"><li>MCAT学习WSIs和基因组之间的密集共同胡伊利映射。受到VQA中词嵌入如何关注图像中显著对象以回答问题。MCAT使用GCA作为早期融合策略，通过将基因组特征作为query，从一个大的置换不变集/多实例包中识别出有信息的实例</li></ol><ol type="1" id="1061035d-5445-80c2-932d-cb06144113bb" class="numbered-list" start="7"><li>优势：1）捕捉了多模态交互，2）GCA层如何将WSI包的有效“序列长度”从M个实例级图像块特征减少到N个基因引导的视觉概念</li></ol><ul id="1061035d-5445-80a0-b974-efffd5ab6278" class="toggle"><li><details open=""><summary>Related Work</summary></details></li></ul><ol type="1" id="1061035d-5445-8017-9172-f7487484e367" class="numbered-list" start="1"><li>Weak Supervision in Gigapixel Images</li></ol><ol type="1" id="c69e4eac-7188-4b93-b1b4-32c59e72a00c" class="numbered-list" start="2"><li>Attention in set based deep learning ： ViT的方法在WSI中计算复杂度太大，堆叠自注意力网络架构是不可行的</li></ol><ol type="1" id="044ed022-da44-4e4b-aed1-6505dd1f1891" class="numbered-list" start="3"><li>Multimodel deep learning：以往的方案都是基于后期融合的，提供了有限的多模态交互可解释性，目前WSI的多模态工作并没有类似的可解释性机制，无法关联WSI中的组织学特征与基因组相关联</li></ol><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Method</summary><div class="indented"><ul id="1061035d-5445-801e-9edf-d84985ac92ad" class="toggle"><li><details open=""><summary>如何将WSI和基因组构造为集合，使用实例级特征提取</summary><p id="27a4a18a-d58e-41ae-9cd3-825c3eab56a8" class="">
+</p></details></li></ul><ul id="1061035d-5445-80f7-a931-cd92372a5f5a" class="toggle"><li><details open=""><summary>基因组引导共同注意力层，学习WSI和基因组的集合表示之间的密集共同注意力映射</summary><p id="923e258b-a1e5-41b7-bebc-987351206e0d" class="">transformer的V, K 是WSI 中的，Q是 gene 数据提取的，用来判断WSI的哪一些地方需要被注意</p></details></li></ul><ul id="d0d7927e-ab54-49ae-a298-785a71ab7257" class="toggle"><li><details open=""><summary>调整基于集合的变换器以用于生存结果预测中的多实例学习</summary><p id="1071035d-5445-8056-8c63-e9b2910b5bff" class="">
+</p></details></li></ul><ul id="1061035d-5445-8023-8894-ced70700b4f9" class="toggle"><li><details open=""><summary>讨论实现的细节</summary><p id="1061035d-5445-80c2-963c-f731b0629e47" class="">一些超参数的设定和训练的细节</p></details></li></ul><p id="1021035d-5445-803c-b773-ffda048405c2" class="">提出的架构：</p><p id="1021035d-5445-80d9-a971-fe56d81849c5" class="">解决的问题：</p><p id="1021035d-5445-80d6-a789-f198ecb5ece9" class="">架构的实现：</p><p id="1021035d-5445-80fa-97b5-f795177df1df" class="">代码的理解：</p><p id="1021035d-5445-80c2-8a68-d0d40def95d6" class="">相关的技术：MIL，Set Transformer等，先简要了解一下</p></div></details></div></details></div></details><ul id="10a1035d-5445-8057-aa6a-ea22bd03fff2" class="bulleted-list"><li style="list-style-type:disc"><del>global attention pooling 的实现和作用是什么？</del></li></ul><ul id="10c1035d-5445-802d-9496-ce83c35ece32" class="bulleted-list"><li style="list-style-type:disc">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  15231这个数字是怎么计算出来的？</li></ul><ul id="10c1035d-5445-8094-b9f0-f4089c996c7d" class="bulleted-list"><li style="list-style-type:disc">MIL 分了clustering sum 和 attention 三类，分别是用来做什么的？</li></ul><p id="10b1035d-5445-804a-8bf5-ee11a16cb21a" class="">MCAT 中使用的一些函数实现和理解</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="10b1035d-5445-8040-93c8-fb0d1d3ec42c" class="code"><code class="language-Python">        ### FC Layer over WSI bag
+        size = self.size_dict_WSI[model_size_wsi]
+        fc = [nn.Linear(size[0], size[1]), nn.ReLU()]
+        fc.append(nn.Dropout(0.25))
+        self.wsi_net = nn.Sequential(*fc)
+        </code></pre><p id="10b1035d-5445-807e-bfb7-ed82da0461e1" class="">一个全连接的神经网络， 接受的输入张量为处理后的WSI，形状为： ( 15231, 1, 256  )</p><p id="10b1035d-5445-80b0-9725-e5d14f11dc4d" class="">内含一个linear层，一个ReLU作为激活函数，一个Dropout层</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="10b1035d-5445-80f9-aaf6-def4b848b1cf" class="code"><code class="language-Python">        hidden = self.size_dict_omic[model_size_omic]
+        sig_networks = []
+        for input_dim in omic_sizes:
+            fc_omic = [SNN_Block(dim1=input_dim, dim2=hidden[0])]
+            for i, _ in enumerate(hidden[1:]):
+                fc_omic.append(SNN_Block(dim1=hidden[i], dim2=hidden[i+1], dropout=0.25))
+            sig_networks.append(nn.Sequential(*fc_omic))
+        self.sig_networks = nn.ModuleList(sig_networks)</code></pre><p id="abe81fe4-0f9c-4a55-b0ca-5bba7ff8ecd4" class="">用来处理genomic的数据，具体实现暂时还没有弄清楚，大致是对每一次输入的向量输进一个SNN_Block 中，最终将6个向量拼起来作为最终的输出, 输出的形状为 (6, 1, 256)</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="10b1035d-5445-803d-92e3-d7dcf1579cef" class="code"><code class="language-Python">def SNN_Block(dim1, dim2, dropout=0.25):
+    r&quot;&quot;&quot;
+    Multilayer Reception Block w/ Self-Normalization (Linear + ELU + Alpha Dropout)
+
+    args:
+        dim1 (int): Dimension of input features
+        dim2 (int): Dimension of output features
+        dropout (float): Dropout rate
+    &quot;&quot;&quot;
+    import torch.nn as nn
+
+    return nn.Sequential(
+            nn.Linear(dim1, dim2),
+            nn.ELU(),
+            nn.AlphaDropout(p=dropout, inplace=False))
+</code></pre><p id="ce0ad196-5e4b-498a-b240-ae623c4a1e6e" class="">SNN_Block， 是一个linear, 一个 ELU 和 一个 AlphaDropout 合起来的层</p><p id="10b1035d-5445-8042-a427-f8ddbbe20202" class="">ELU 函数与 ReLU 相比，在负值一段没有直接将值置零，而是使用了一个负指数，数学表达式如下：</p><figure id="b9df3378-a318-4593-848e-8036cbc9fa12" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>ELU</mtext><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mrow><mo fence="true">{</mo><mtable rowspacing="0.36em" columnalign="left left" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mi>x</mi></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mtext>if </mtext><mi>x</mi><mo>&gt;</mo><mn>0</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>α</mi><mo stretchy="false">(</mo><mi>exp</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mtext>if </mtext><mi>x</mi><mo>≤</mo><mn>0</mn></mrow></mstyle></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">\text{ELU}(x) = \begin{cases} x &amp; \text{if } x &gt; 0  \\ \alpha (\exp(x) - 1) &amp; \text{if } x \leq 0 \end{cases}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">ELU</span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:3em;vertical-align:-1.25em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size4">{</span></span><span class="mord"><span class="mtable"><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.69em;"><span style="top:-3.69em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathnormal">x</span></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mopen">(</span><span class="mop">exp</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.19em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:1em;"></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.69em;"><span style="top:-3.69em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord text"><span class="mord">if </span></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">0</span></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord text"><span class="mord">if </span></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.19em;"><span></span></span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></div></figure><p id="10b1035d-5445-80c6-aacb-df898f6ea346" class="">这样避免了死神经元问题，有助于梯度的流动</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="10b1035d-5445-80f5-a4cd-fc0e8e14e4fd" class="code"><code class="language-Python">        ### Path Transformer + Attention Head
+        path_encoder_layer = nn.TransformerEncoderLayer(d_model=256, nhead=8, dim_feedforward=512, dropout=dropout, activation=&#x27;relu&#x27;)
+        self.path_transformer = nn.TransformerEncoder(path_encoder_layer, num_layers=2)
+        self.path_attention_head = Attn_Net_Gated(L=size[2], D=size[2], dropout=dropout, n_classes=1)
+        self.path_rho = nn.Sequential(*[nn.Linear(size[2], size[2]), nn.ReLU(), nn.Dropout(dropout)])</code></pre><p id="f5a52b96-b9f9-41da-adeb-77fec591443e" class="">
+</p><p id="10b1035d-5445-800b-9204-f3711de2697a" class="">前两行对于WSI 切成的 patch ，构建一个transformer的 decoder 部分对张量进行处理</p><p id="10b1035d-5445-8034-b0b4-f4170ce753bd" class="">后两行起到了全局注意力池化的作用，对特征进行汇聚和抽取</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="af12f0a4-5963-42bc-96c3-5d2fedc4668e" class="code"><code class="language-Python">class Attn_Net_Gated(nn.Module):
+    def __init__(self, L = 1024, D = 256, dropout = False, n_classes = 1):
+        r&quot;&quot;&quot;
+        Attention Network with Sigmoid Gating (3 fc layers)
+
+        args:
+            L (int): input feature dimension
+            D (int): hidden layer dimension
+            dropout (bool): whether to apply dropout (p = 0.25)
+            n_classes (int): number of classes
+        &quot;&quot;&quot;
+        super(Attn_Net_Gated, self).__init__()
+        self.attention_a = [
+            nn.Linear(L, D),
+            nn.Tanh()]
+        
+        self.attention_b = [nn.Linear(L, D), nn.Sigmoid()]
+        if dropout:
+            self.attention_a.append(nn.Dropout(0.25))
+            self.attention_b.append(nn.Dropout(0.25))
+
+        self.attention_a = nn.Sequential(*self.attention_a)
+        self.attention_b = nn.Sequential(*self.attention_b)
+        self.attention_c = nn.Linear(D, n_classes)
+
+    def forward(self, x):
+        a = self.attention_a(x)
+        b = self.attention_b(x)
+        A = a.mul(b)
+        A = self.attention_c(A)  # N x n_classes
+        return A, x</code></pre><p id="c94f7b73-3825-4cd7-8725-315e8c091181" class="">这里用到了 gated Attention , 使用一个sigmoid函数和一个可训练的linear层对每一个attention的权重进行选择性屏蔽</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="10b1035d-5445-8074-bddf-de2592f90b7a" class="code"><code class="language-Python">if self.fusion == &#x27;concat&#x27;:
+            self.mm = nn.Sequential(*[nn.Linear(256*2, size[2]), nn.ReLU(), nn.Linear(size[2], size[2]), nn.ReLU()])
+        elif self.fusion == &#x27;bilinear&#x27;:
+            self.mm = BilinearFusion(dim1=256, dim2=256, scale_dim1=8, scale_dim2=8, mmhid=256)
+        else:
+            self.mm = None</code></pre><p id="10b1035d-5445-8094-a7e8-cbd1d1d4661a" class="">对于两种模态的数据，提供了两种混合的方式，一种是直接拼接起来，再通过一个linear层把形状还原，另一种是双线性层进行混合</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="10b1035d-5445-80e7-b14c-e8b63b88d75b" class="code"><code class="language-Python">class BilinearFusion(nn.Module):
+    r&quot;&quot;&quot;
+    Late Fusion Block using Bilinear Pooling
+
+    args:
+        skip (int): Whether to input features at the end of the layer
+        use_bilinear (bool): Whether to use bilinear pooling during information gating
+        gate1 (bool): Whether to apply gating to modality 1
+        gate2 (bool): Whether to apply gating to modality 2
+        dim1 (int): Feature mapping dimension for modality 1
+        dim2 (int): Feature mapping dimension for modality 2
+        scale_dim1 (int): Scalar value to reduce modality 1 before the linear layer
+        scale_dim2 (int): Scalar value to reduce modality 2 before the linear layer
+        mmhid (int): Feature mapping dimension after multimodal fusion
+        dropout_rate (float): Dropout rate
+    &quot;&quot;&quot;
+    def __init__(self, skip=0, use_bilinear=0, gate1=1, gate2=1, dim1=128, dim2=128, scale_dim1=1, scale_dim2=1, mmhid=256, dropout_rate=0.25):
+        super(BilinearFusion, self).__init__()
+        self.skip = skip
+        self.use_bilinear = use_bilinear
+        self.gate1 = gate1
+        self.gate2 = gate2
+
+        dim1_og, dim2_og, dim1, dim2 = dim1, dim2, dim1//scale_dim1, dim2//scale_dim2
+        skip_dim = dim1_og+dim2_og if skip else 0
+
+        self.linear_h1 = nn.Sequential(nn.Linear(dim1_og, dim1), nn.ReLU())
+        self.linear_z1 = nn.Bilinear(dim1_og, dim2_og, dim1) if use_bilinear else nn.Sequential(nn.Linear(dim1_og+dim2_og, dim1))
+        self.linear_o1 = nn.Sequential(nn.Linear(dim1, dim1), nn.ReLU(), nn.Dropout(p=dropout_rate))
+
+        self.linear_h2 = nn.Sequential(nn.Linear(dim2_og, dim2), nn.ReLU())
+        self.linear_z2 = nn.Bilinear(dim1_og, dim2_og, dim2) if use_bilinear else nn.Sequential(nn.Linear(dim1_og+dim2_og, dim2))
+        self.linear_o2 = nn.Sequential(nn.Linear(dim2, dim2), nn.ReLU(), nn.Dropout(p=dropout_rate))
+
+        self.post_fusion_dropout = nn.Dropout(p=dropout_rate)
+        self.encoder1 = nn.Sequential(nn.Linear((dim1+1)*(dim2+1), 256), nn.ReLU(), nn.Dropout(p=dropout_rate))
+        self.encoder2 = nn.Sequential(nn.Linear(256+skip_dim, mmhid), nn.ReLU(), nn.Dropout(p=dropout_rate))
+
+    def forward(self, vec1, vec2):
+        ### Gated Multimodal Units
+        if self.gate1:
+            h1 = self.linear_h1(vec1)
+            z1 = self.linear_z1(vec1, vec2) if self.use_bilinear else self.linear_z1(torch.cat((vec1, vec2), dim=1))
+            o1 = self.linear_o1(nn.Sigmoid()(z1)*h1)
+        else:
+            h1 = self.linear_h1(vec1)
+            o1 = self.linear_o1(h1)
+
+        if self.gate2:
+            h2 = self.linear_h2(vec2)
+            z2 = self.linear_z2(vec1, vec2) if self.use_bilinear else self.linear_z2(torch.cat((vec1, vec2), dim=1))
+            o2 = self.linear_o2(nn.Sigmoid()(z2)*h2)
+        else:
+            h2 = self.linear_h2(vec2)
+            o2 = self.linear_o2(h2)
+
+        ### Fusion
+        o1 = torch.cat((o1, torch.cuda.FloatTensor(o1.shape[0], 1).fill_(1)), 1)
+        o2 = torch.cat((o2, torch.cuda.FloatTensor(o2.shape[0], 1).fill_(1)), 1)
+        o12 = torch.bmm(o1.unsqueeze(2), o2.unsqueeze(1)).flatten(start_dim=1) # BATCH_SIZE X 1024
+        out = self.post_fusion_dropout(o12)
+        out = self.encoder1(out)
+        if self.skip: out = torch.cat((out, vec1, vec2), 1)
+        out = self.encoder2(out)
+        return out</code></pre><p id="10b1035d-5445-80ae-aaca-eb834d448d8a" class="">以上是Bilinear 的实现方法，</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="9bd868ad-b73c-46d2-a2bf-e78e37997d10" class="code"><code class="language-Python">self.classifier = nn.Linear(size[2], n_classes)</code></pre><p id="10b1035d-5445-8003-a158-c1023f854423" class="">最终使用一个linear层将结果分类</p><p id="14b1035d-5445-802f-8aa5-edf00c123893" class="">高维低质，考虑多模态WSI 和 基因  解决什么问题？ 怎么解决问题的？</p><p id="14b1035d-5445-80cc-bab1-f3a7f782e042" class="">从病理开始入手</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
