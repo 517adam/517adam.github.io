@@ -1,0 +1,12 @@
+.blog-image {
+    max-width: 600px;  /* 减小最大宽度 */
+    margin: 0 auto;
+    padding: 15px;
+}
+
+.blog-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://517adam.github.io/sitemap.xml
