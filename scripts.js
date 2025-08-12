@@ -18,6 +18,8 @@ const observer = new IntersectionObserver(entries => {
         }
     });
 }, { threshold: 0.18 });
+// expose for dynamic modules
+window.observer = observer;
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 

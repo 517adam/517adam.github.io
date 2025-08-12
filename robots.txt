@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+# Block build / temp artifacts & archives with no SEO value
+Disallow: /temp.tex
+Disallow: /*.aux$
+Disallow: /*.log$
+Disallow: /*.fls$
+Disallow: /notes/*/Export-*.zip
+
+Sitemap: https://517adam.github.io/sitemap.xml

@@ -13,6 +13,14 @@
     <meta name="baidu-site-verification" content="您的验证码">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- 语言与区域 -->
+    <meta http-equiv="Content-Language" content="zh-CN, en">
+    <!-- 规范化 URL -->
+    <link rel="canonical" href="https://517adam.github.io/">
+    <!-- 多语言（目前使用参数切换，可日后改为独立路径） -->
+    <link rel="alternate" hreflang="zh-CN" href="https://517adam.github.io/">
+    <link rel="alternate" hreflang="en" href="https://517adam.github.io/en/">
+    <link rel="alternate" hreflang="x-default" href="https://517adam.github.io/">
     <title>陈元中 | Chen Yuanzhong - HKUST CS & Math</title>
     <!-- Open Graph -->
     <meta property="og:title" content="陈元中 | Chen Yuanzhong - HKUST CS & Math">
@@ -32,10 +40,47 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <!-- 预加载首屏头像，提升 LCP -->
+        <link rel="preload" as="image" href="assets/images/profile.jpg">
     <!-- 修正文件名: style.css -->
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="icon" type="image/svg+xml" href="icons/icon.svg">
+        <!-- 结构化数据：WebSite + Person -->
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@graph": [
+                {
+                    "@type": "WebSite",
+                    "name": "陈元中 | Chen Yuanzhong",
+                        "url": "https://517adam.github.io/",
+                        "inLanguage": ["zh-CN","en"],
+                        "description": "HKUST 计算机与数学本科生：博客 / 项目 / 笔记 / 研究方向：机器学习与计算病理。",
+                        "publisher": {"@id": "#person"},
+                        "potentialAction": {
+                            "@type": "SearchAction",
+                            "target": "https://517adam.github.io/?q={search_term_string}",
+                            "query-input": "required name=search_term_string"
+                        }
+                },
+                {
+                    "@id": "#person",
+                    "@type": "Person",
+                    "name": "陈元中 (Chen Yuanzhong)",
+                    "alumniOf": {
+                        "@type": "CollegeOrUniversity",
+                        "name": "The Hong Kong University of Science and Technology"
+                    },
+                    "url": "https://517adam.github.io/",
+                    "image": "https://517adam.github.io/assets/images/profile.jpg",
+                    "sameAs": [
+                        "https://github.com/517adam"
+                    ]
+                }
+            ]
+        }
+        </script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             var navbarHeight = document.querySelector('.navbar').offsetHeight;
