@@ -1,0 +1,118 @@
+%-------------------------------------
+% Resum in LaTeX (XeLaTeX)
+% Author:  HF Yuan
+% Project: https://github.com/xyz-yuanhf/yuan-resume
+% Base on: https://github.com/mattyHerzig/mattys_resume
+%          http://www.jianxu.net/en/
+% License: MIT
+%------------------------------------
+
+\documentclass[a4paper, 10pt]{article}
+\usepackage{myresume}  % Style package
+
+% --------------------  START  --------------------
+\begin{document}
+
+% -------------------- HEADING --------------------
+\begin{flushright}
+  \setstretch{0.6}
+  \item {\Calluna \faPhone~(+852) 5394-5058}  % 使用 FontAwesome 图标
+  \item {\Calluna \faEnvelope~ychenlg@connect.ust.hk.com}
+  \item {\Calluna \faGlobe~\href{https://517adam.github.io/}{517adam.github.io}}
+\end{flushright}\vspace{-40pt}
+
+\begin{flushleft}
+  {\Calluna \fontsize{30pt}{30pt}\selectfont \textsc{Yuanzhong Chen}} \hfill
+  {\Calluna \fontsize{14.5pt}{14.5pt}\selectfont \textsc{B.Sc.}}
+  \noindent\rule{\textwidth}{0.6pt}
+\end{flushleft}
+
+% -------------------- EDUCATION --------------------
+\sectionBlock{
+\section{Education}
+}{
+\eduHeading
+  {Dept. of Computer Science \& Mathematics, HKUST}{Hong Kong, China}
+  {B.Sc. in Computer Science and Mathematics}{2023 -- 2027 \footnotesize{\textit{(expected)}}}
+\itemListStart
+  \myItem{Research: Machine Learning, Deep Learning, Computational Pathology}
+\itemListEnd
+
+\eduHeading
+  {Stanford University}{California, USA}
+  {International Honors Program}{2025.6 -- 2025.8}
+}
+
+% -------------------- RESEARCH --------------------
+\sectionBlock{
+\section{Research}
+}{
+\pubListStart
+{\textbf{Multimodal Learning for Cancer Diagnosis and Prognosis} \\
+Supervised by Prof. Hao Chen}
+{Computational pathology research for cancer diagnosis using Whole Slide Images}{2024.9 -- 2025.9}
+\pubListEnd
+}
+
+% -------------------- PROJECTS --------------------
+\sectionBlock{
+\section{Projects}
+}{
+\projHeading
+{\textbf{Zero-Shot Spatial Reasoning with LLMs}}
+{Course Project, COMP5214}{2025.3 -- 2025.5}
+\itemListStart
+  \myItem{Explored spatial reasoning capabilities of large language models in zero-shot settings.}
+\itemListEnd
+
+\projHeading
+{\textbf{Survey on Cancer Diagnosis with WSI Images}}
+{Undergraduate Research Opportunity Program}{2024.9 -- 2025.9}
+\itemListStart
+  \myItem{Reviewed state-of-the-art methods for cancer diagnosis using whole slide imaging.}
+\itemListEnd
+}
+
+% -------------------- INTERNSHIPS --------------------
+\sectionBlock{
+\section{Internships}
+}{
+\internHeading
+  {iFLYTEK Ltd.}{Hefei, China}{2024.06 -- 2024.08}
+\itemListStart
+  \myItem{Developed scripts for web data collection and preprocessing for unsupervised learning.}
+  \myItem{Prepared reports and summarized research findings.}
+\itemListEnd
+}
+
+% -------------------- AWARDS & HONORS --------------------
+\sectionBlock{
+\section{Awards \& Honors}
+}{
+\awardListStart
+\item \emph{Dean's List}, HKUST \hfill 2023.9--2025.6 (4 times)
+\item \emph{The Continuous Scholarship (Top 2\% students)}, HKUST \hfill 2023--2024
+\awardListEnd
+}
+
+% -------------------- SKILLS --------------------
+\sectionBlock{
+\section{Skills}
+}{
+\skillListStart
+\item \emph{Languages}: Mandarin (Native), English
+\item \emph{Programming}: Python, C++, MATLAB, R, CSS, HTML, PyTorch, TensorFlow
+\skillListEnd
+}
+
+% -------------------- COURSES --------------------
+\sectionBlock{
+\section{Selected Courses}
+}{
+\CourseListStart
+\item \emph{MAHT2431 Honors Probability}
+\item \emph{COMP5214 Advanced Deep Learning Architecture}
+\item \emph{CS229 Machine Learning (Stanford)}
+\CourseListEnd
+}
+\end{document}

@@ -4,18 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- 优化以下meta标签内容 -->
-    <meta name="description" content="陈元中 Chen Yuanzhong的个人博客 - 香港科技大学计算机科学与数学双专业学生，博客写着玩">
+    <meta name="description" content="陈元中 (Chen Yuanzhong) - HKUST 计算机与数学本科生 | 博客 | 项目 | 学习与研究笔记">
     <meta name="keywords" content="Chen Yuanzhong ,HKUST,COSC+MATH,AI,博客,笔记">
     <meta name="author" content="陈元中 Chen Yuanzhong">
     <meta name="robots" content="index, follow">
     <!-- 添加新的meta标签 -->
     <meta name="google-site-verification" content="您的验证码">
     <meta name="baidu-site-verification" content="您的验证码">
-    <title>Chen Yuanzhong's blog 陈元中的个人博客 - HKUST CS 学生</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>陈元中 | Chen Yuanzhong - HKUST CS & Math</title>
+    <!-- Open Graph -->
+    <meta property="og:title" content="陈元中 | Chen Yuanzhong - HKUST CS & Math">
+    <meta property="og:description" content="HKUST 计算机与数学本科生：博客 / 项目 / 笔记 / 研究方向：机器学习与计算病理。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://517adam.github.io/">
+    <meta property="og:image" content="https://517adam.github.io/assets/images/profile.jpg">
+    <meta property="og:locale" content="zh_CN">
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="陈元中 | HKUST CS & Math">
+    <meta name="twitter:description" content="个人主页：学习、研究、项目、博客。">
+    <meta name="twitter:image" content="https://517adam.github.io/assets/images/profile.jpg">
+    <meta name="theme-color" content="#0d1117">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <!-- 修正文件名: style.css -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" type="image/svg+xml" href="icons/icon.svg">
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             var navbarHeight = document.querySelector('.navbar').offsetHeight;
@@ -25,9 +45,9 @@
 </head>
 <body>
     <!-- 导航栏 -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg glass-nav fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#" data-i18n="nav.title2">我的主页</a>
+            <a class="navbar-brand fw-bold" href="#" data-i18n="nav.title2">我的主页</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -39,8 +59,9 @@
                     <li class="nav-item"><a class="nav-link" href="#contact" data-i18n="nav.contact">联系方式</a></li>
                     <li class="nav-item"><a class="nav-link" href="blog/index.html" data-i18n="nav.blog">博客</a></li>
                     <li class="nav-item"><a class="nav-link" href="notes/index.html" data-i18n="nav.notes">笔记</a></li>
-                    <li class="nav-item">
-                        <button class="btn btn-outline-light" onclick="toggleLanguage()" id="langToggle">EN</button>
+                    <li class="nav-item d-flex align-items-center gap-2 ms-lg-3 mt-2 mt-lg-0">
+                        <button class="btn btn-sm btn-outline-secondary" id="themeToggle" aria-label="Theme" title="切换主题"><i class="fa-solid fa-moon"></i></button>
+                        <button class="btn btn-sm btn-outline-primary" onclick="toggleLanguage()" id="langToggle">EN</button>
                     </li>
                 </ul>
             </div>
@@ -48,24 +69,28 @@
     </nav>
 
     <!-- 头部 -->
-    <header class="hero-section">
+    <header class="hero-section d-flex align-items-center position-relative overflow-hidden">
+        <canvas id="particles-canvas" class="particles-canvas" aria-hidden="true"></canvas>
         <div class="container text-center">
-            <h1 class="display-4" data-i18n="header.welcome">欢迎来到我的个人主页</h1>
-            <p class="lead" data-i18n="header.construction">网页施工中........</p>
+            <h1 class="display-4 fw-bold hero-title" data-i18n="header.welcome">欢迎来到我的个人主页</h1>
+            <p class="lead opacity-75 mb-4 hero-sub" data-i18n="header.construction">网页施工中........</p>
+            <a href="#about" class="btn btn-accent btn-lg" data-i18n="header.cta">开始浏览</a>
         </div>
+        <div class="hero-bg-shape"></div>
+        <div class="scroll-indicator" aria-hidden="true"><span></span></div>
     </header>
 
     <!-- 关于我 -->
-    <section id="about" class="py-5">
+    <section id="about" class="py-5 reveal">
         <div class="container">
             <h2 class="text-center mb-4" data-i18n="about.title">关于我</h2>
             <div class="row">
                 <div class="col-md-6">
-                    <p data-i18n="about.description">你好！我是陈元中，现在是香港科技大学一个大二学生。目前的学习兴趣是人工智能方向。正在练习搭建一个网页喵~</p>
+                    <p data-i18n="about.description">你好！我是陈元中，现在是香港科技大学一个大三学生。目前的学习兴趣是人工智能方向。正在练习搭建一个网页喵~ 目前在学习计算病理学的相关知识，想要完成一个通过WSI图片能够输出病理学报告的大模型</p>
                 </div>
                 <div class="col-md-6">
                     <div class="text-center" style="max-width: 300px; margin: 0 auto;">
-                        <img src="assets/images/profile.jpg" alt="我的照片" class="img-fluid rounded-circle">
+                        <img src="assets/images/profile.jpg" alt="我的照片" class="img-fluid rounded-circle" loading="lazy" decoding="async" width="300" height="300" style="max-width:100%;height:auto;">
                     </div>
                 </div>
             </div>
@@ -73,7 +98,7 @@
     </section>
 
     <!-- 教育经历 -->
-    <section id="education" class="py-5 bg-light">
+    <section id="education" class="py-5 alt-bg reveal">
         <div class="container">
             <h2 class="text-center mb-4" data-i18n="education.title">教育经历</h2>
             <div class="row">
@@ -81,7 +106,7 @@
                     <div class="card mb-4 shadow-sm">
                         <div class="card-body">
                             <h5 class="card-title" data-i18n="education.university">香港科技大学</h5>
-                            <p class="card-text" data-i18n="education.major">计算机科学与技术+数学（应用数学） | 本科 | 2023-</p>
+                            <p class="card-text" data-i18n="education.major">计算机科学与技术+数学 | 本科 | 2023-</p>
                             <button class="btn btn-primary" type="button" data-bs-toggle="collapse" 
                                     data-bs-target="#courseList" aria-expanded="false" aria-controls="courseList" data-i18n="education.courses">
                                 查看课程
@@ -93,6 +118,8 @@
                                         <li class="list-group-item">COMP 2011&2012 - Introduction to Computer Science</li>
                                         <li class="list-group-item">COMP 2211 - Exploring Artificial Intelligence</li>
                                         <li class="list-group-item">MATH 1013&1014,2023 - Calculus IB,IIB,Multivariable Calculus</li>
+                                        <li class="list-group-item">MATH 2033 Mathematical analysis</li>
+                                        <li class="list-group-item">COMP 5214 Advanced Deep Learning Architecture</li>
                                     </ul>
                                 </div>
                             </div>
@@ -115,18 +142,18 @@
     </section>
 
     <!-- 项目经历 -->
-    <section id="projects" class="py-5">
+    <section id="projects" class="py-5 reveal">
         <div class="container">
             <h2 class="text-center mb-4" data-i18n="projects.title">项目经历</h2>
             <div class="row">
-                <div class="col-md-4">
+                <!-- <div class="col-md-4">
                     <div class="card mb-4 shadow-sm">
                         <div class="card-body">
                             <h5 class="card-title" data-i18n="projects.project1">个人博客系统</h5>
                             <p class="card-text">使用Django开发的个人博客系统，支持文章发布和评论功能。</p>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="col-md-4">
                     <div class="card mb-4 shadow-sm">
                         <div class="card-body">
@@ -141,7 +168,7 @@
     </section>
 
     <!-- 联系方式 -->
-    <section id="contact" class="py-5 bg-light">
+    <section id="contact" class="py-5 alt-bg reveal">
         <div class="container">
             <h2 class="text-center mb-4", data-i18n="contact.contactway">联系方式</h2>
             <div class="row">
@@ -158,8 +185,9 @@
     </section>
 
     <!-- 页脚 -->
-    <footer class="bg-dark text-white text-center py-3">
-        <p>&copy; 2025 我的个人主页. 保留所有权利。</p>
+    <footer class="site-footer text-center py-4 mt-5">
+        <p class="mb-1 small">&copy; 2025 <span data-i18n="nav.title2">我的主页</span>. <span data-i18n="footer.rights">保留所有权利</span>.</p>
+        <p class="small text-muted" data-i18n="footer.powered">由热爱与好奇心驱动 :)</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -176,8 +204,9 @@
                 'nav.proj': '项目经历',
                 'header.welcome': '欢迎来到我的个人主页',
                 'header.construction': '网页施工中........',
+                'header.cta': '开始浏览',
                 'about.title': '关于我',
-                'about.description': '你好！我是陈元中,现在是香港科技大学一个大二学生。目前的学习兴趣是人工智能方向。正在练习搭建一个网页喵~',
+                'about.description': '你好！我是陈元中，现在是香港科技大学一个大三学生。目前的学习兴趣是人工智能方向。正在练习搭建一个网页喵~ 目前在学习计算病理学的相关知识，想要完成一个通过WSI图片能够输出病理学报告的大模型',
                 'education.title': '教育经历',
                 'education.university': '香港科技大学',
                 'education.major': '计算机科学与技术+数学（应用数学）',
@@ -189,11 +218,13 @@
                 'education.schoolMajor': '理科',
                 'education.schoolYear': '2020-2023',
                 'projects.title': '项目经历',
-                'projects.project1': '个人博客系统',
+                // 'projects.project1': '个人博客系统',
                 'projects.project2': '本科生科研计划（UROP）',
-                'projects.project2c': '一种基于多模态transformer的癌症预后生存分析',
+                'projects.project2c': '医疗方面的人工智能，以计算病理学为主要研究方向',
                 'contact.contactway': '联系方式',
-                'contact.tel': '电话: +852 53945058'
+                'contact.tel': '电话: +852 53945058',
+                'footer.rights': '保留所有权利',
+                'footer.powered': '由热爱与好奇心驱动 :)'
                 // 添加更多中文翻译
             },
             'en': {
@@ -206,6 +237,7 @@
                 'nav.proj': 'Projects',
                 'header.welcome': 'Welcome to My Personal Website',
                 'header.construction': 'Website Under Construction........',
+                'header.cta': 'Explore Now',
                 'about.title': 'About Me',
                 'about.description': 'Hello! I\'m Chen Yuanzhong, a second year student at HKUST. I am practicing building a website~',
                 'education.title': 'Education',
@@ -219,11 +251,13 @@
                 'education.schoolMajor': 'Science',
                 'education.schoolYear': '2020-2023',
                 'projects.title': 'Projects',
-                'projects.project1': 'Personal Blog System',
+                // 'projects.project1': 'Personal Blog System',
                 'projects.project2': 'Undergraduate Research Opportunities Program (UROP)',
                 'projects.project2c': 'A multimodal transformer-based cancer prognosis survival analysis',
                 'contact.contactway': 'Contact Information',
-                'contact.tel': 'Tel: +852 53945058'
+                'contact.tel': 'Tel: +852 53945058',
+                'footer.rights': 'All rights reserved',
+                'footer.powered': 'Powered by passion & curiosity :)'
                 // 添加更多英文翻译
             }
         };

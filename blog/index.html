@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>博客随笔</title>
+    <title>博客随笔 | Blog</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="manifest" href="../manifest.webmanifest">
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             var navbarHeight = document.querySelector('.navbar').offsetHeight;
@@ -16,9 +17,9 @@
     </script>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg glass-nav fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="../index.html">我的主页</a>
+            <a class="navbar-brand fw-bold" href="../index.html">我的主页</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -26,67 +27,32 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="../notes/index.html">学习笔记</a></li>
                     <li class="nav-item"><a class="nav-link" href="../blog/index.html">博客随笔</a></li>
+                    <li class="nav-item d-flex align-items-center ms-lg-3 mt-2 mt-lg-0 gap-2">
+                        <button class="btn btn-sm btn-outline-secondary" id="themeToggle" aria-label="Theme"><i class="fa-solid fa-moon"></i></button>
+                        <a class="btn btn-sm btn-outline-primary" href="../index.html#about">返回主页</a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <header class="container mt-5 pt-3">
-        <h1>博客随笔</h1>
+    <header class="container pt-5 mt-5 mb-4 reveal">
+        <h1 class="fw-bold">博客随笔 <span class="opacity-75" style="font-size:1.2rem;">/ Thoughts & Logs</span></h1>
+        <p class="text-muted mb-0" style="max-width:620px">记录一些零散想法、学习心得、以及游戏/项目过程。保持好奇，持续迭代。</p>
     </header>
 
-    <section class="container my-5">
-        <div class="row g-4">
-            <!-- 编程学习卡片 -->
-            <div class="col-md-4">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-body">
-                        <h3 class="card-title">如何学习编程</h3>
-                        <p class="card-text">优质解答：我不会</p>
-                        <a href="#" class="btn btn-primary">阅读更多</a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- 前端开发卡片 -->
-            <div class="col-md-4">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-body">
-                        <h3 class="card-title">前端开发技巧</h3>
-                        <p class="card-text">AI is all you need.</p>
-                        <a href="#" class="btn btn-primary">阅读更多</a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- 技术栈卡片 -->
-            <div class="col-md-4">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-body">
-                        <h3 class="card-title">我的技术栈</h3>
-                        <p class="card-text">我并没有技术栈</p>
-                        <a href="#" class="btn btn-primary">阅读更多</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 游戏相关卡片 -->
-            <div class="col-md-4">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-body">
-                        <h3 class="card-title">游戏相关</h3>
-                        <p class="card-text">一些玩游戏时有意思的事</p>
-                        <a href="game/index.html" class="btn btn-primary">阅读更多</a>
-                    </div>
-                </div>
-            </div>
-
+    <section class="container mb-5">
+        <div class="post-grid" data-post-grid>
+            <p class="text-muted">Loading posts...</p>
         </div>
     </section>
 
-    <footer class="container text-center mt-5">
-        <p>&copy; 2023 我的个人主页. 保留所有权利。</p>
+    <footer class="site-footer text-center py-4 mt-5 reveal">
+        <p class="mb-1 small">&copy; 2025 我的主页 · 保留所有权利.</p>
+        <p class="small text-muted">Powered by passion & curiosity.</p>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../scripts.js"></script>
+    <script src="blog.js"></script>
 </body>
 </html>

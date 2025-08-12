@@ -1,0 +1,15 @@
+{
+  "name": "陈元中个人站 | Chen Yuanzhong",
+  "short_name": "YzChen",
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0d1117",
+  "theme_color": "#0d1117",
+  "lang": "zh-CN",
+  "description": "HKUST 学生的个人网站：博客 / 项目 / 笔记 / 研究",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
