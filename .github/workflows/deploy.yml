@@ -10,6 +10,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     permissions:
+    environment: github-pages
       contents: read
       pages: write
       id-token: write
