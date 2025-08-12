@@ -8,7 +8,7 @@ async function loadPosts(retry=0){
   if(location.protocol === 'file:') {
     console.warn('[Blog] Detected file:// protocol, using embedded fallback posts (run a local server to enable dynamic fetch).');
     const fallbackPosts = [
-      {"date":"2025-02-13","category":"游戏","title":"游戏相关：那些好玩的瞬间","summary":"碎片时间里的体验与机制观察。","tags":["Game"],"url":"/blog/game/index.html"},
+      {"date":"2025-02-13","category":"游戏","title":"游戏相关：那些好玩的瞬间","summary":"碎片时间里的体验与机制观察。","tags":["Game"],"url":"game/index.html"},
       {"date":"2025-02-12","category":"随笔","title":"我的技术栈（其实没有）","summary":"堆栈是一种动态分布，不是身份标签。","tags":["Reflection"],"url":"#"},
       {"date":"2025-02-11","category":"前端","title":"前端开发技巧：AI 辅助下的最小工作流","summary":"把注意力留给信息架构与交互，重复劳动交给工具链。","tags":["Frontend","AI"],"url":"#"},
       {"date":"2025-02-10","category":"学习","title":"如何学习编程（也许不学也行?）","summary":"一堆犯错与踩坑后的随感：节奏、动机、反馈闭环，还有放弃恐惧。","tags":["Learning","Mindset"],"url":"#"}
@@ -80,9 +80,17 @@ function normalizeUrl(u){
   while(u.startsWith('../')) u = u.slice(3);
   // remove leading repeating blog/ to avoid /blog/blog/
   u = u.replace(/^blog\//i,'');
-  // default base for blog section
-  const base = '/blog/';
-  return (base + u).replace(/\/+/g,'/');
+  
+  // For GitHub Pages, use relative paths from current location
+  if(u === '#') return '#';
+  
+  // If it's a game page, use relative path
+  if(u.includes('game/') || u.startsWith('game')) {
+    return u.startsWith('game/') ? u : `game/${u}`;
+  }
+  
+  // For other internal blog links, use relative paths
+  return u;
 }
 
 // Delegate click to sanitize any stale duplicated path links
