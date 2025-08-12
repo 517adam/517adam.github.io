@@ -38,5 +38,15 @@
     "tags": ["Game"],
     "url": "game/index.html",
     "lang": "zh"
+  },
+  {
+    "id": "random-things",
+    "title": "随便聊聊那些有趣的事情",
+    "summary": "一些碎片化的想法和灵感。",
+    "date": "2025-02-14",
+    "category": "随笔",
+    "tags": ["Random"],
+    "url": "random_things/index.html",
+    "lang": "zh"
   }
 ]
