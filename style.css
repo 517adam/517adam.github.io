@@ -301,6 +301,37 @@ body.light .tag {
 img { transition: filter .6s ease, transform .6s ease; }
 img.hover-zoom:hover { transform: scale(1.035); }
 
+/* Photo Gallery */
+.photo-gallery {
+    max-width: 300px;
+    margin: 0 auto;
+}
+.main-photo img {
+    box-shadow: var(--shadow);
+    border: 3px solid var(--border);
+    transition: all .4s cubic-bezier(.16,.84,.44,1);
+}
+.main-photo img:hover {
+    border-color: var(--accent);
+    box-shadow: 0 8px 25px -5px rgba(59,130,246,0.3);
+}
+body.light .main-photo img:hover {
+    box-shadow: 0 8px 25px -5px rgba(59,130,246,0.2);
+}
+.secondary-photo img {
+    box-shadow: var(--shadow);
+    border: 2px solid var(--border);
+    transition: all .4s cubic-bezier(.16,.84,.44,1);
+    border-radius: var(--radius);
+}
+.secondary-photo img:hover {
+    border-color: var(--accent);
+    box-shadow: 0 6px 20px -3px rgba(59,130,246,0.25);
+}
+body.light .secondary-photo img:hover {
+    box-shadow: 0 6px 20px -3px rgba(59,130,246,0.15);
+}
+
 /* Responsive tweaks */
 @media (max-width: 768px) {
     .hero-section { min-height: 70vh; }
