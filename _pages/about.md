@@ -7,9 +7,9 @@ redirect_from:
   - /about.html
 ---
 
-Yuanzhong Chen is a B.Sc. student in Computer Science and Mathematics at The Hong Kong University of Science and Technology (HKUST). He is expected to graduate in June 2027.
+Hi, I am Yuanzhong Chen, a B.Sc. student in Computer Science and Mathematics at The Hong Kong University of Science and Technology (HKUST). I am expected to graduate in June 2027.
 
-His research interests include Multi-modal Learning, Medical Image Analysis, and Large Language Models. He is currently a Research Assistant at HKUST Smart Lab, supervised by Prof. Hao Chen.
+My research interests include Multi-modal Learning, Medical Image Analysis, and Large Language Models. I am currently a Research Assistant at HKUST Smart Lab, supervised by Prof. Hao Chen.
 
 Education
 ======
