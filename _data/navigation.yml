@@ -24,7 +24,7 @@ main:
   #   url: /year-archive/
     
   - title: "Blog"
-    url: /blog/
+    url: /my-blog/
     
   - title: "CV"
     url: /cv/
