@@ -9,7 +9,7 @@ redirect_from:
 
 Hi, I am Yuanzhong Chen, a B.Sc. student in Computer Science and Mathematics at The Hong Kong University of Science and Technology (HKUST). I am expected to graduate in June 2027.
 
-My research interests include Multi-modal Learning, Medical Image Analysis, and Large Language Models. I am currently a Research Assistant at HKUST Smart Lab, supervised by Prof. Hao Chen.
+My research interests include Multi-modal Learning, Medical Image Analysis, and Large Language Models. I am now working with VILAB at EPFL with Prof. Amir Zamir. Previously, I was a Research Assistant at HKUST Smart Lab, supervised by Prof. Hao Chen.
 
 Education
 ======
@@ -18,14 +18,15 @@ Education
   * Sep. 2023 -- June 2027 (Expected)
   * Cumulative GPA: 3.923 / 4.3
 * **École Polytechnique Fédérale de Lausanne (EPFL)**
-  * Exchange Student
-  * Spring 2026 (Nominated)
+  * Exchange Student(computer science)
+  * Spring 2026
 * **Stanford University**
   * International Honors Program (Summer Session)
   * June 2025 -- Aug. 2025
 
 News
 ======
+* **Feb. 2026**: Happy to join VILAB and work for the semester project!
 * **Sep. 2025**: Started as a Research Assistant at HKUST Smart Lab.
 * **June 2025**: Attended Stanford University International Honors Program.
 * **June 2024**: Interned at iFLYTEK Co., Ltd. as an AI Data Processing Intern.
