@@ -8,29 +8,20 @@
 #      Markdown formatted page while the second is generated using JSON.
 
 main:
-  # - title: "Publications"
-  #   url: /publications/
+  - title: "Home"
+    url: /#home
 
-  # - title: "Talks"
-  #   url: /talks/    
+  - title: "About"
+    url: /#about
 
-  # - title: "Teaching"
-  #   url: /teaching/    
-    
-  # - title: "Portfolio"
-  #   url: /portfolio/
-        
-  # - title: "Blog Posts"
-  #   url: /year-archive/
-    
-  - title: "Blog"
-    url: /my-blog/
-    
+  - title: "News"
+    url: /#news
+
+  - title: "Selected Publications"
+    url: /#publications
+
+  - title: "Services"
+    url: /#services
+
   - title: "CV"
-    url: /cv/
-    
-  # - title: "CV"
-  #   url: /cv-json/
-    
-  # - title: "Guide"
-  #   url: /markdown/
+    url: /files/EPFL_Summer_Research_Intern.pdf

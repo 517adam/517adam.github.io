@@ -1,0 +1,831 @@
+---
+layout: compress
+---
+
+{% include base_path %}
+
+<!doctype html>
+<html lang="{{ site.locale | slice: 0,2 }}" class="no-js">
+  <head>
+    {% include head.html %}
+    {% include head/custom.html %}
+    <style>
+      html {
+        font-size: 15px;
+      }
+
+      /* Override core variables for homepage */
+      body {
+        padding-top: 0 !important;
+        font-family: "Georgia", "Times New Roman", Times, serif !important;
+      }
+      
+      /* Masthead styling to clear white background and stick to top */
+      .masthead {
+        background-color: rgba(18, 22, 24, 0.34) !important;
+        backdrop-filter: blur(8px);
+        border-bottom: none !important;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 9999;
+      }
+
+      /* Force nav internals to stay transparent instead of default white strip */
+      .masthead,
+      .masthead .wrapper,
+      .masthead__inner-wrap,
+      .masthead__menu,
+      .masthead__menu-item,
+      .greedy-nav,
+      .greedy-nav .visible-links,
+      .greedy-nav .hidden-links {
+        background: transparent !important;
+        border: none !important;
+      }
+
+      .greedy-nav .visible-links li {
+        background: transparent !important;
+      }
+
+      .masthead__menu-item a, .site-title {
+        color: #f7f8f8 !important;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+        font-size: 0.92rem;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+      }
+      .masthead__menu-item a:hover {
+        color: #ffffff !important;
+      }
+      .greedy-nav button {
+        color: #f7f8f8 !important;
+      }
+
+      .greedy-nav .hidden-links a {
+        color: #1f2a32 !important;
+      }
+
+      .greedy-nav .hidden-links {
+        background: rgba(245, 247, 249, 0.95) !important;
+        border-radius: 6px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Hero section styles */
+      .hero-wrapper {
+        position: relative;
+        padding-top: 90px;
+        padding-bottom: 28px;
+        min-height: 36vh;
+        max-height: 430px;
+        display: flex;
+        align-items: flex-end;
+        overflow: hidden;
+      }
+
+      .hero-bg-slideshow {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        cursor: zoom-in;
+      }
+
+      .hero-bg-slide {
+        position: absolute;
+        inset: 0;
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        opacity: 0;
+        animation: heroBgFade 15s infinite;
+        transform: scale(1.02);
+      }
+
+      .hero-bg-slide-1 {
+        background-image: url('https://images.unsplash.com/photo-1497440001374-f26997328c1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+        animation-delay: 0s;
+      }
+
+      .hero-bg-slide-2 {
+        background-image: url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+        animation-delay: 5s;
+      }
+
+      .hero-bg-slide-3 {
+        background-image: url('https://images.unsplash.com/photo-1496307653780-42ee777d4833?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+        animation-delay: 10s;
+      }
+
+      .hero-wrapper::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        background: linear-gradient(180deg, rgba(15, 20, 24, 0.45) 0%, rgba(15, 20, 24, 0.58) 70%, rgba(15, 20, 24, 0.65) 100%);
+      }
+
+      @keyframes heroBgFade {
+        0% { opacity: 0; }
+        8% { opacity: 1; }
+        26% { opacity: 1; }
+        34% { opacity: 0; }
+        100% { opacity: 0; }
+      }
+      
+      .hero-content {
+        position: relative;
+        z-index: 10;
+        max-width: 1100px;
+        margin: 0 auto;
+        display: flex;
+        align-items: stretch;
+        gap: 30px;
+        width: 100%;
+        padding: 0 20px;
+      }
+
+      @media (max-width: 768px) {
+        .hero-wrapper {
+          min-height: auto;
+          max-height: none;
+          padding-top: 82px;
+          padding-bottom: 24px;
+        }
+
+        .hero-content {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+      }
+
+      .hero-img {
+        position: relative;
+        flex-shrink: 0;
+        width: 245px;
+        aspect-ratio: 3 / 4;
+        margin-top: -30px; /* Half-immersed style */
+        margin-bottom: -14px;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        cursor: pointer;
+        z-index: 15;
+        transition: transform 0.3s ease;
+      }
+      
+      .hero-img:hover {
+        transform: translateY(-5px);
+      }
+      
+      .hero-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .photo-nav {
+        position: absolute;
+        bottom: 15px;
+        right: 15px;
+        display: flex;
+        gap: 10px;
+        z-index: 20;
+      }
+      
+      .photo-nav-btn {
+        background: rgba(0,0,0,0.5);
+        color: white;
+        border: 1px solid rgba(255,255,255,0.4);
+        border-radius: 50%;
+        width: 34px;
+        height: 34px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 15px;
+        transition: all 0.2s ease;
+      }
+      
+      .photo-nav-btn:hover {
+        background: rgba(255,255,255,0.9);
+        color: black;
+        transform: scale(1.1);
+      }
+
+      /* Lightbox */
+      .lightbox-overlay {
+        display: none;
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.85);
+        z-index: 100000;
+        justify-content: center;
+        align-items: center;
+        backdrop-filter: blur(8px);
+      }
+      .lightbox-overlay.active { display: flex; }
+      
+      .lightbox-img-wrapper {
+        position: relative;
+        max-width: 90vw;
+        max-height: 90vh;
+      }
+      
+      .lightbox-img-wrapper img {
+        max-width: 100%;
+        max-height: 90vh;
+        border-radius: 8px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        object-fit: contain;
+      }
+      
+      .lightbox-close {
+        position: absolute;
+        top: -40px; right: -40px;
+        color: white; font-size: 35px; cursor: pointer;
+        transition: transform 0.2s;
+      }
+      .lightbox-close:hover { transform: scale(1.1); }
+
+      .lightbox-overlay.bg-gallery-overlay {
+        opacity: 0;
+        transition: opacity 0.28s ease;
+      }
+
+      .lightbox-overlay.bg-gallery-overlay.active {
+        opacity: 1;
+      }
+
+      .bg-gallery-stage {
+        position: fixed;
+        inset: 0;
+        z-index: 100001;
+        pointer-events: auto;
+      }
+
+      .bg-gallery-main {
+        position: absolute;
+        inset: 0;
+        background: rgba(10, 10, 10, 0.35);
+      }
+
+      .bg-gallery-main img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .bg-gallery-top {
+        position: absolute;
+        top: 16px;
+        right: 18px;
+        z-index: 3;
+      }
+
+      .bg-gallery-top .lightbox-close {
+        position: static;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        font-size: 32px;
+        line-height: 1;
+      }
+
+      .bg-gallery-nav-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.55);
+        background: rgba(0, 0, 0, 0.45);
+        color: #fff;
+        cursor: pointer;
+        font-size: 18px;
+        z-index: 3;
+      }
+
+      .bg-gallery-nav-btn:hover {
+        background: rgba(255, 255, 255, 0.9);
+        color: #111;
+      }
+
+      .bg-gallery-nav-prev { left: 16px; }
+      .bg-gallery-nav-next { right: 16px; }
+
+      .bg-gallery-thumbs {
+        position: absolute;
+        left: 50%;
+        bottom: 20px;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 10px;
+        overflow-x: auto;
+        padding: 8px 12px;
+        border-radius: 10px;
+        background: rgba(8, 10, 12, 0.5);
+        z-index: 3;
+        max-width: min(92vw, 980px);
+      }
+
+      .bg-gallery-thumb {
+        flex: 0 0 auto;
+        width: 108px;
+        height: 68px;
+        padding: 0;
+        border-radius: 8px;
+        border: 2px solid transparent;
+        overflow: hidden;
+        cursor: pointer;
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .bg-gallery-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .bg-gallery-thumb.active {
+        border-color: #9fd3ff;
+      }
+
+      .bg-zoom-clone {
+        position: fixed;
+        z-index: 100003;
+        pointer-events: none;
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        border-radius: 10px;
+        box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45);
+        transform-origin: center center;
+      }
+      
+      @media (max-width: 768px) {
+        .lightbox-close { top: -40px; right: 0; }
+        .hero-img {
+           margin-top: 0; margin-bottom: 0; width: 190px;
+        }
+
+        .bg-gallery-main {
+          inset: 0;
+        }
+
+        .bg-gallery-thumb {
+          width: 84px;
+          height: 54px;
+        }
+
+        .bg-gallery-thumbs {
+          bottom: 12px;
+          max-width: 96vw;
+        }
+      }
+
+      .hero-info {
+        background: rgba(70, 80, 75, 0.65);
+        backdrop-filter: blur(6px);
+        border-radius: 12px;
+        padding: 40px;
+        color: #fff;
+        flex: 1;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .hero-info h1 {
+        margin-top: 0;
+        font-size: 2.2rem;
+        color: #fff;
+        font-family: inherit;
+        font-weight: normal;
+        margin-bottom: 15px;
+        border-bottom: none;
+      }
+      
+      .hero-info p {
+        margin: 4px 0;
+        font-size: 1rem;
+        line-height: 1.4;
+        color: #f8f8f8;
+        font-family: "Georgia", "Times New Roman", Times, serif;
+      }
+
+      .hero-links {
+        display: flex;
+        gap: 35px;
+        margin-top: 30px;
+        flex-wrap: wrap;
+      }
+      
+      @media (max-width: 768px) {
+         .hero-links {
+           justify-content: center;
+         }
+      }
+
+      .hero-links a {
+        color: #fff !important;
+        text-decoration: none !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 0.95rem;
+        transition: transform 0.2s, opacity 0.2s;
+        font-family: inherit;
+      }
+
+      .hero-links a:hover {
+        opacity: 0.8;
+        transform: translateY(-2px);
+        text-decoration: none !important;
+      }
+
+      .hero-links i {
+        font-size: 2.1rem;
+        margin-bottom: 10px;
+      }
+
+      /* Main container like the reference site */
+      .home-main {
+        max-width: 900px;
+        margin: 20px auto;
+        padding: 0 20px;
+      }
+
+      .home-main h2 {
+        font-size: 1.9rem;
+        border-bottom: 1px solid var(--global-border-color);
+        padding-bottom: 10px;
+        margin-top: 2em;
+        margin-bottom: 1em;
+        color: var(--global-text-color);
+        font-weight: normal;
+      }
+
+      .home-main h2:first-of-type {
+        margin-top: 0.1em;
+      }
+      
+      .home-main h3 {
+        font-size: 1.3rem;
+        color: var(--global-text-color);
+        margin-top: 1.5em;
+        margin-bottom: 1em;
+      }
+
+      .home-main p, .home-main li {
+        font-size: 1rem;
+        line-height: 1.8;
+        color: var(--global-text-color);
+      }
+      
+      /* Links inside text */
+      .home-main a {
+        color: var(--global-link-color);
+        text-decoration: none;
+      }
+      .home-main a:hover {
+        color: var(--global-link-color-hover);
+        text-decoration: underline;
+      }
+
+      html[data-theme="dark"] .home-main h2,
+      html[data-theme="dark"] .home-main h3,
+      html[data-theme="dark"] .home-main p,
+      html[data-theme="dark"] .home-main li,
+      html[data-theme="dark"] .home-main strong,
+      html[data-theme="dark"] .home-main em,
+      html[data-theme="dark"] .home-main blockquote,
+      html[data-theme="dark"] .home-main span {
+        color: #f2f4f5 !important;
+      }
+
+      html[data-theme="dark"] .home-main h2 {
+        border-bottom-color: rgba(242, 244, 245, 0.28);
+      }
+
+      html[data-theme="dark"] .home-main a {
+        color: #8bc3ff !important;
+      }
+
+      html[data-theme="dark"] .home-main a:hover {
+        color: #b6d7ff !important;
+      }
+      
+      /* Target anchors fix for fixed navbar */
+      :target {
+        scroll-margin-top: 90px;
+      }
+      
+      .photo-credit {
+        position: absolute;
+        bottom: 10px;
+        right: 15px;
+        color: #eee;
+        font-size: 0.85rem;
+        font-family: "Helvetica Neue", sans-serif;
+      }
+    </style>
+  </head>
+
+  <body>
+    {% include browser-upgrade.html %}
+    {% include masthead.html %}
+
+    <div class="hero-wrapper" id="home">
+      <div class="hero-bg-slideshow" aria-hidden="true" onclick="openBgLightbox()">
+        <div class="hero-bg-slide hero-bg-slide-1"></div>
+        <div class="hero-bg-slide hero-bg-slide-2"></div>
+        <div class="hero-bg-slide hero-bg-slide-3"></div>
+      </div>
+
+      <div class="hero-content">
+        <div class="hero-img" onclick="openLightbox()">
+          <img id="hero-photo" src="{% if site.author.avatar contains '://' %}{{ site.author.avatar }}{% else %}{{ site.author.avatar | prepend: '/images/' | prepend: base_path }}{% endif %}" alt="{{ site.author.name }}">
+          
+          <div class="photo-nav" onclick="event.stopPropagation()">
+            <div class="photo-nav-btn" onclick="prevPhoto()" title="Previous"><i class="fas fa-chevron-left"></i></div>
+            <div class="photo-nav-btn" onclick="nextPhoto()" title="Next"><i class="fas fa-chevron-right"></i></div>
+          </div>
+        </div>
+        <div class="hero-info">
+          <h1>{{ site.author.name }}</h1>
+          <p>{{ site.author.bio }}</p>
+          <p>{{ site.author.employer }}</p>
+          
+          <div class="hero-links">
+            {% if site.author.googlescholar %}
+            <a href="{{ site.author.googlescholar }}" target="_blank"><i class="ai ai-google-scholar ai-fw"></i><span>G.Scholar</span></a>
+            {% endif %}
+            
+            {% if site.author.github %}
+            <a href="https://github.com/{{ site.author.github }}" target="_blank"><i class="fab fa-github fa-fw"></i><span>GitHub</span></a>
+            {% endif %}
+            
+            {% if site.author.openreview %}
+            <a href="{{ site.author.openreview }}" target="_blank"><i class="ai ai-open-access ai-fw"></i><span>OpenReview</span></a>
+            {% endif %}
+            
+            {% if site.author.email %}
+            <a href="mailto:{{ site.author.email }}"><i class="fas fa-envelope fa-fw"></i><span>Email</span></a>
+            {% endif %}
+            
+            {% if site.author.twitter %}
+            <a href="https://twitter.com/{{ site.author.twitter }}" target="_blank"><i class="fab fa-twitter fa-fw"></i><span>Twitter</span></a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      <div class="photo-credit">Photo taken by me ...</div>
+    </div>
+
+    <div class="home-main">
+      {{ content }}
+    </div>
+
+    <div class="page__footer">
+      <footer>
+        {% include footer/custom.html %}
+        {% include footer.html %}
+      </footer>
+    </div>
+
+    <!-- Lightbox for Photo Full View -->
+    <div class="lightbox-overlay" id="photo-lightbox" onclick="closeLightbox(event)">
+      <div class="lightbox-img-wrapper">
+        <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
+        <img id="lightbox-photo" src="" alt="Full Photo">
+      </div>
+    </div>
+
+    <!-- Lightbox for Background Full View -->
+    <div class="lightbox-overlay bg-gallery-overlay" id="bg-lightbox" onclick="closeBgLightbox(event)">
+      <div class="bg-gallery-stage" onclick="event.stopPropagation()">
+        <div class="bg-gallery-main">
+          <img id="lightbox-bg-photo" src="" alt="Full Background">
+        </div>
+
+        <div class="bg-gallery-top">
+          <span class="lightbox-close" onclick="closeBgLightbox(event)">&times;</span>
+        </div>
+
+        <button class="bg-gallery-nav-btn bg-gallery-nav-prev" onclick="prevBgImage()" aria-label="Previous image">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+
+        <button class="bg-gallery-nav-btn bg-gallery-nav-next" onclick="nextBgImage()" aria-label="Next image">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+
+        <div class="bg-gallery-thumbs" id="bg-gallery-thumbs"></div>
+      </div>
+    </div>
+
+    <script>
+      // Automatically generate a list of photos to switch between. 
+      // Starting with the main avatar, add others if you use multiple profiles.
+      const avatarPath = "{% if site.author.avatar contains '://' %}{{ site.author.avatar }}{% else %}{{ site.author.avatar | prepend: '/images/' | prepend: base_path }}{% endif %}";
+      const bgImageList = [
+        "https://images.unsplash.com/photo-1497440001374-f26997328c1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1496307653780-42ee777d4833?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+      ];
+      const photoList = [
+        avatarPath,
+        "{{ base_path }}/images/profile1.png",
+        "{{ base_path }}/images/bio-photo-2.jpg"
+      ];
+      const bgRotateMs = 15000;
+      const bgStepMs = 5000;
+      const bgAnimationStart = Date.now();
+      let currentIdx = 0;
+      let currentBgIdx = 0;
+      
+      const heroPhoto = document.getElementById('hero-photo');
+      const lightboxPhoto = document.getElementById('lightbox-photo');
+      const lightboxOverlay = document.getElementById('photo-lightbox');
+      const bgLightboxOverlay = document.getElementById('bg-lightbox');
+      const bgLightboxPhoto = document.getElementById('lightbox-bg-photo');
+      const bgThumbContainer = document.getElementById('bg-gallery-thumbs');
+      const bgTriggerArea = document.querySelector('.hero-bg-slideshow');
+      const bgOverlayFadeMs = 260;
+      const bgZoomMs = 420;
+
+      function updatePhoto() {
+        heroPhoto.src = photoList[currentIdx];
+        lightboxPhoto.src = photoList[currentIdx];
+      }
+
+      function nextPhoto() {
+        currentIdx = (currentIdx + 1) % photoList.length;
+        updatePhoto();
+      }
+
+      function prevPhoto() {
+        currentIdx = (currentIdx - 1 + photoList.length) % photoList.length;
+        updatePhoto();
+      }
+
+      function openLightbox() {
+        lightboxPhoto.src = photoList[currentIdx];
+        lightboxOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden'; 
+      }
+
+      function getCurrentBackgroundIndex() {
+        const elapsed = (Date.now() - bgAnimationStart) % bgRotateMs;
+        return Math.floor(elapsed / bgStepMs) % bgImageList.length;
+      }
+
+      function renderBgThumbs() {
+        bgThumbContainer.innerHTML = "";
+        bgImageList.forEach((src, idx) => {
+          const thumbBtn = document.createElement('button');
+          thumbBtn.className = 'bg-gallery-thumb';
+          thumbBtn.type = 'button';
+          thumbBtn.onclick = function () { setBgGalleryImage(idx); };
+          thumbBtn.setAttribute('aria-label', 'Open image ' + (idx + 1));
+
+          const thumbImg = document.createElement('img');
+          thumbImg.src = src;
+          thumbImg.alt = 'Background thumbnail ' + (idx + 1);
+
+          thumbBtn.appendChild(thumbImg);
+          bgThumbContainer.appendChild(thumbBtn);
+        });
+      }
+
+      function setBgGalleryImage(idx) {
+        currentBgIdx = (idx + bgImageList.length) % bgImageList.length;
+        bgLightboxPhoto.src = bgImageList[currentBgIdx];
+
+        const thumbs = bgThumbContainer.querySelectorAll('.bg-gallery-thumb');
+        thumbs.forEach((thumb, thumbIdx) => {
+          thumb.classList.toggle('active', thumbIdx === currentBgIdx);
+        });
+      }
+
+      function nextBgImage() {
+        setBgGalleryImage(currentBgIdx + 1);
+      }
+
+      function prevBgImage() {
+        setBgGalleryImage(currentBgIdx - 1);
+      }
+
+      function openBgLightbox() {
+        if (!bgThumbContainer.children.length) {
+          renderBgThumbs();
+        }
+        const initialIdx = getCurrentBackgroundIndex();
+        setBgGalleryImage(initialIdx);
+        animateBgZoom(true, initialIdx);
+        bgLightboxOverlay.style.display = 'flex';
+        requestAnimationFrame(function () {
+          bgLightboxOverlay.classList.add('active');
+        });
+        document.body.style.overflow = 'hidden';
+      }
+
+      function hideBgLightbox() {
+        animateBgZoom(false, currentBgIdx);
+        bgLightboxOverlay.classList.remove('active');
+        setTimeout(function () {
+          if (!bgLightboxOverlay.classList.contains('active')) {
+            bgLightboxOverlay.style.display = 'none';
+            document.body.style.overflow = '';
+          }
+        }, bgOverlayFadeMs + 30);
+      }
+
+      function closeBgLightbox(e) {
+        const target = e.target;
+        if (target.id === 'bg-lightbox' || (target.classList && target.classList.contains('lightbox-close'))) {
+          hideBgLightbox();
+        }
+      }
+
+      function animateBgZoom(isOpening, idx) {
+        if (!bgTriggerArea) {
+          return;
+        }
+
+        const rect = bgTriggerArea.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        const viewportCenterX = window.innerWidth / 2;
+        const viewportCenterY = window.innerHeight / 2;
+        const translateX = viewportCenterX - centerX;
+        const translateY = viewportCenterY - centerY;
+        const scaleX = window.innerWidth / rect.width;
+        const scaleY = window.innerHeight / rect.height;
+        const clone = document.createElement('div');
+
+        clone.className = 'bg-zoom-clone';
+        clone.style.left = rect.left + 'px';
+        clone.style.top = rect.top + 'px';
+        clone.style.width = rect.width + 'px';
+        clone.style.height = rect.height + 'px';
+        clone.style.backgroundImage = 'url("' + bgImageList[idx] + '")';
+
+        document.body.appendChild(clone);
+
+        const fromTransform = isOpening
+          ? 'translate(0px, 0px) scale(1, 1)'
+          : 'translate(' + translateX + 'px, ' + translateY + 'px) scale(' + scaleX + ', ' + scaleY + ')';
+        const toTransform = isOpening
+          ? 'translate(' + translateX + 'px, ' + translateY + 'px) scale(' + scaleX + ', ' + scaleY + ')'
+          : 'translate(0px, 0px) scale(1, 1)';
+
+        clone.animate(
+          [
+            { transform: fromTransform, borderRadius: isOpening ? '10px' : '0px', opacity: 1 },
+            { transform: toTransform, borderRadius: isOpening ? '0px' : '10px', opacity: isOpening ? 0.9 : 0.92 }
+          ],
+          {
+            duration: bgZoomMs,
+            easing: 'cubic-bezier(0.2, 0.75, 0.2, 1)'
+          }
+        ).onfinish = function () {
+          clone.remove();
+        };
+      }
+
+      document.addEventListener('keydown', function (e) {
+        if (!bgLightboxOverlay.classList.contains('active')) {
+          return;
+        }
+        if (e.key === 'ArrowRight') {
+          nextBgImage();
+        } else if (e.key === 'ArrowLeft') {
+          prevBgImage();
+        } else if (e.key === 'Escape') {
+          hideBgLightbox();
+        }
+      });
+
+      function closeLightbox(e) {
+        if (e.target.id === 'photo-lightbox' || e.target.classList.contains('lightbox-close')) {
+          lightboxOverlay.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      }
+    </script>
+
+    {% include scripts.html %}
+  </body>
+</html>
