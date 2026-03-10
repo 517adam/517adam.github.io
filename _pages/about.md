@@ -31,7 +31,7 @@ I completed my summer session at [Stanford University](https://www.stanford.edu/
 
 <div id="publications"></div>
 
-## Selected Publications
+## Research Experience
 
 <div class="pub-entry">
   <div class="pub-text">
@@ -53,7 +53,7 @@ I completed my summer session at [Stanford University](https://www.stanford.edu/
 
 <div id="services"></div>
 
-## Services
+## Industry Experience
 
 <div class="education-entry">
   <strong>iFLYTEK Co., Ltd.</strong> — AI Data Processing Intern<br/>

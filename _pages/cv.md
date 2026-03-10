@@ -1,6 +1,6 @@
 ---
 layout: archive
-title: "CV"
+title: "Curriculum Vitae"
 permalink: /cv/
 author_profile: true
 redirect_from:
@@ -9,8 +9,8 @@ redirect_from:
 
 {% include base_path %}
 
-Education
-======
+## Education
+
 * **The Hong Kong University of Science and Technology (HKUST)**
   * B.Sc. in Computer Science and Mathematics (Double Major)
   * Sep. 2023 -- June 2027 (Expected)
@@ -18,16 +18,15 @@ Education
   * Selected Coursework: Advanced Deep Learning Architecture (Postgrad level), Graph Neural Networks, Large Language Models, Honors Probability.
 
 * **École Polytechnique Fédérale de Lausanne (EPFL)**
-  * Exchange Student
-  * Spring 2026 (Nominated)
+  * Exchange Student (Computer Science)
+  * Spring 2026
 
 * **Stanford University**
   * International Honors Program (Summer Session)
   * June 2025 -- Aug. 2025
   * Coursework: Machine Learning (CS229), Design and Analysis of Algorithms (CS161)
 
-Research Experience
-======
+## Research Experience
 * **Pathology Report Generation via Multi-modal Learning** (Sep. 2025 -- Present)
   * Research Assistant, Supervised by Prof. Hao Chen, HKUST Smart Lab
   * Proposed a novel multi-modal framework to automatically generate pathology reports from Whole Slide Images (WSI).

@@ -12,7 +12,7 @@ site_theme               : "default" # Currently available options are "default"
 title                    : "Yuanzhong Chen"
 title_separator          : "-"
 name                     : &name "Yuanzhong Chen"
-description              : &description "Yuanzhong Chen's academic portfolio"   # Update this with a general description of your site, this is the default if not overridden by a page
+description              : &description "Yuanzhong Chen's academic homepage"   # Update this with a general description of your site, this is the default if not overridden by a page
 url                      : https://517adam.github.io # The base hostname & protocol for your site e.g. "https://[your GitHub username].github.io",
                                                            # or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
@@ -26,16 +26,17 @@ author:
   avatar           : "profile.png"
   name             : "Yuanzhong Chen"
   pronouns         : # example: "she/her"  
-  bio              : "B.Sc. in Computer Science and Mathematics at HKUST"
+  bio              : "B.Sc. in Computer Science and Mathematics"
   location         : "Hong Kong, China"
-  employer         : "HKUST"
+  employer         : "Hong Kong University of Science and Technology"
   uri              : # URL
   email            : "ychenlg@connect.ust.hk" 
 
   # Academic websites
   academia         : # URL
   arxiv            : # URL - Update with the correct link to your profile
-  googlescholar    : # "https://scholar.google.com/citations?user=PS_CX0AAAAAJ"
+  googlescholar    : "https://scholar.google.com/"
+  openreview       : "https://openreview.net/"
   inspire-hep      : # URL
   impactstory      : # URL
   orcid            : # "https://orcid.org/yourorcidurl"
@@ -78,15 +79,6 @@ author:
   xing             : # Username
   youtube          : # Username
   zhihu            : # Username
-
-# Publication Category - The following the list of publication categories and their headings
-publication_category:
-  books:
-    title: 'Books'
-  manuscripts:
-    title: 'Journal Articles'    
-  conferences:
-    title: 'Conference Papers'
 
 # Site Settings
 teaser                   :  # filename of teaser fallback teaser image placed in /images/ for social media previews
@@ -216,22 +208,6 @@ kramdown:
   enable_coderay: false
 
 
-# These settings control the types of collections used by the template
-collections:
-  teaching:
-    output: true
-    permalink: /:collection/:path/
-  publications:
-    output: true
-    permalink: /:collection/:path/
-  portfolio:
-    output: true
-    permalink: /:collection/:path/
-  talks:
-    output: true
-    permalink: /:collection/:path/
-
-
 # These settings control how pages and collections are included in the site
 defaults:
   # _posts
@@ -242,7 +218,7 @@ defaults:
       layout: single
       author_profile: true
       read_time: true
-      comments: true
+      comments: false
       share: true
       related: true
   # _pages
@@ -252,41 +228,6 @@ defaults:
     values:
       layout: single
       author_profile: true
-  # _teaching
-  - scope:
-      path: ""
-      type: teaching
-    values:
-      layout: single
-      author_profile: true
-      share: true
-      comments: true
-  # _publications
-  - scope:
-      path: ""
-      type: publications
-    values:
-      layout: single
-      author_profile: true
-      share: true
-      comments: true
-  # _portfolio
-  - scope:
-      path: ""
-      type: portfolio
-    values:
-      layout: single
-      author_profile: true
-      share: true
-      comment: true
-  # _talks
-  - scope:
-      path: ""
-      type: talks
-    values:
-      layout: talk
-      author_profile: true
-      share: true
 
 
 # Sass/SCSS
