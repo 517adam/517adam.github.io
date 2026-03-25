@@ -102,17 +102,17 @@ layout: compress
       }
 
       .hero-bg-slide-1 {
-        background-image: url('https://images.unsplash.com/photo-1497440001374-f26997328c1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+        background-image: url('{{ base_path }}/images/pic1.jpg');
         animation-delay: 0s;
       }
 
       .hero-bg-slide-2 {
-        background-image: url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+        background-image: url('{{ base_path }}/images/pic2.jpg');
         animation-delay: 5s;
       }
 
       .hero-bg-slide-3 {
-        background-image: url('https://images.unsplash.com/photo-1496307653780-42ee777d4833?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+        background-image: url('{{ base_path }}/images/pic3.jpg');
         animation-delay: 10s;
       }
 
@@ -640,9 +640,9 @@ layout: compress
       // Starting with the main avatar, add others if you use multiple profiles.
       const avatarPath = "{% if site.author.avatar contains '://' %}{{ site.author.avatar }}{% else %}{{ site.author.avatar | prepend: '/images/' | prepend: base_path }}{% endif %}";
       const bgImageList = [
-        "https://images.unsplash.com/photo-1497440001374-f26997328c1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
-        "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
-        "https://images.unsplash.com/photo-1496307653780-42ee777d4833?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+        "{{ base_path }}/images/pic1.jpg",
+        "{{ base_path }}/images/pic2.jpg",
+        "{{ base_path }}/images/pic3.jpg"
       ];
       const photoList = [
         avatarPath,
