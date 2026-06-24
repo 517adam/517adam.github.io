@@ -23,5 +23,8 @@ main:
   - title: "Services"
     url: /#services
 
+  - title: "Blog"
+    url: /my-blog/
+
   - title: "CV"
     url: /files/EPFL_Summer_Research_Intern.pdf

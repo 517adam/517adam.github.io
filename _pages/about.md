@@ -12,17 +12,18 @@ redirect_from:
 
 ## About Me
 
-Hi, I am a B.Sc. student in Computer Science and Mathematics at [The Hong Kong University of Science and Technology (HKUST)](https://hkust.edu.hk/). I am expected to graduate in June 2027.
+Hi, I am a B.Sc. student in Computer Science and Mathematics at [The Hong Kong University of Science and Technology (HKUST)](https://hkust.edu.hk/). I completed my summer session at [Stanford University](https://www.stanford.edu/) in 2025. 
 
-My research interests include **Multi-modal Learning**, **Computer vision**, and **Embodied AI**. Currently, I am now doing undergrad research intern [VILAB](https://vilab.epfl.ch/) at [EPFL](https://www.epfl.ch/en/) with Prof. [Amir Zamir](https://vilab.epfl.ch/zamir/). Previously, I was a UG Research Assistant at [HKUST Smart Lab](https://hkustsmartlab.netlify.app/), supervised by Prof. [Hao Chen](https://cse.hkust.edu.hk/~jhc/).
+My research interests include **Video Generation**, **Computer vision**, and **Embodied AI**. I am now a research assistant at [World Mind Lab](https://worldmind-lab.com/) at HKUST supervised by Prof. [Zhan Fangneng](https://fnzhan.com/). Previously, I was doing undergrad research intern [VILAB](https://vilab.epfl.ch/) at [EPFL](https://www.epfl.ch/en/) with Prof. [Amir Zamir](https://vilab.epfl.ch/zamir/) and a UG Research Assistant at [HKUST Smart Lab](https://hkustsmartlab.netlify.app/), supervised by Prof. [Hao Chen](https://cse.hkust.edu.hk/~jhc/).
 
-I completed my summer session at [Stanford University](https://www.stanford.edu/) in 2025, taking courses in Machine Learning (CS229) and Design and Analysis of Algorithms (CS161).
+
 
 <div id="news"></div>
 
 ## News
 
 <ul class="news-list">
+  <li><span class="news-date">Jul. 2026</span>: Happy to join World Mind Lab at HKUT as research assistant.!</li>
   <li><span class="news-date">Feb. 2026</span>: Happy to join VILAB at EPFL as undergrad research intern!</li>
   <li><span class="news-date">Sep. 2025</span>: Started as a Research Assistant at HKUST Smart Lab.</li>
   <li><span class="news-date">June 2025</span>: Attended Stanford University International Honors Program.</li>

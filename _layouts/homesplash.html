@@ -196,9 +196,11 @@ layout: compress
       }
       
       .photo-nav-btn {
-        background: rgba(0,0,0,0.5);
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(14px) saturate(160%);
+        -webkit-backdrop-filter: blur(14px) saturate(160%);
         color: white;
-        border: 1px solid rgba(255,255,255,0.4);
+        border: 1px solid rgba(255, 255, 255, 0.30);
         border-radius: 50%;
         width: 34px;
         height: 34px;
@@ -207,13 +209,22 @@ layout: compress
         justify-content: center;
         cursor: pointer;
         font-size: 15px;
-        transition: all 0.2s ease;
+        transition: all 0.22s ease;
+        box-shadow:
+          0 2px 8px rgba(0,0,0,0.22),
+          inset 0 1px 0 rgba(255,255,255,0.42),
+          inset 0 -1px 0 rgba(0,0,0,0.1);
       }
-      
+
       .photo-nav-btn:hover {
-        background: rgba(255,255,255,0.9);
-        color: black;
-        transform: scale(1.1);
+        background: rgba(255, 255, 255, 0.22);
+        border-color: rgba(255, 255, 255, 0.50);
+        color: white;
+        transform: scale(1.12);
+        box-shadow:
+          0 4px 16px rgba(0,0,0,0.32),
+          inset 0 1px 0 rgba(255,255,255,0.58),
+          inset 0 -1px 0 rgba(0,0,0,0.12);
       }
 
       /* Lightbox */
@@ -394,16 +405,74 @@ layout: compress
       }
 
       .hero-info {
-        background: rgba(70, 80, 75, 0.65);
-        backdrop-filter: blur(6px);
-        border-radius: 12px;
+        /* Liquid glass card */
+        background: rgba(255, 255, 255, 0.07);
+        backdrop-filter: blur(28px) saturate(180%) brightness(1.06);
+        -webkit-backdrop-filter: blur(28px) saturate(180%) brightness(1.06);
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        border-radius: 20px;
         padding: 40px;
         color: #fff;
         flex: 1;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        box-shadow:
+          0 8px 32px rgba(0, 0, 0, 0.28),
+          0 2px 8px rgba(0, 0, 0, 0.18),
+          inset 0 1.5px 0 rgba(255, 255, 255, 0.38),
+          inset 0 -1px 0 rgba(0, 0, 0, 0.12),
+          inset 1px 0 0 rgba(255, 255, 255, 0.14);
         display: flex;
         flex-direction: column;
         justify-content: center;
+        position: relative;
+        overflow: hidden;
+        transition: box-shadow 0.35s ease, backdrop-filter 0.35s ease;
+        --mx: 50%;
+        --my: 50%;
+      }
+
+      /* Top specular edge highlight */
+      .hero-info::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 12%;
+        right: 12%;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent);
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      /* Mouse-tracking radial highlight (liquid refraction illusion) */
+      .hero-info::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 20px;
+        background: radial-gradient(
+          circle at var(--mx) var(--my),
+          rgba(255, 255, 255, 0.14) 0%,
+          rgba(180, 220, 255, 0.06) 35%,
+          transparent 65%
+        );
+        pointer-events: none;
+        z-index: 0;
+        transition: background 0.08s ease;
+      }
+
+      .hero-info:hover {
+        box-shadow:
+          0 14px 42px rgba(0, 0, 0, 0.32),
+          0 4px 12px rgba(0, 0, 0, 0.2),
+          inset 0 1.5px 0 rgba(255, 255, 255, 0.48),
+          inset 0 -1px 0 rgba(0, 0, 0, 0.14),
+          inset 1px 0 0 rgba(255, 255, 255, 0.2);
+      }
+
+      /* Ensure text is above pseudo-elements */
+      .hero-info > * {
+        position: relative;
+        z-index: 2;
       }
 
       .hero-info h1 {
@@ -543,6 +612,17 @@ layout: compress
   </head>
 
   <body>
+    <!-- Hidden SVG filters for liquid glass displacement -->
+    <svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+      <defs>
+        <!-- Subtle turbulence displacement for liquid glass buttons -->
+        <filter id="lg-btn-filter" x="-10%" y="-10%" width="120%" height="120%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.65 0.75" numOctaves="2" seed="8" result="noise"/>
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.5" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+      </defs>
+    </svg>
+
     {% include browser-upgrade.html %}
     {% include masthead.html %}
 
@@ -804,6 +884,48 @@ layout: compress
           clone.remove();
         };
       }
+
+      // Liquid glass interactive mouse-tracking highlight
+      (function() {
+        function attachLiquidGlass(el) {
+          el.addEventListener('mousemove', function(e) {
+            var rect = el.getBoundingClientRect();
+            var x = ((e.clientX - rect.left) / rect.width * 100).toFixed(1) + '%';
+            var y = ((e.clientY - rect.top) / rect.height * 100).toFixed(1) + '%';
+            el.style.setProperty('--mx', x);
+            el.style.setProperty('--my', y);
+          });
+          el.addEventListener('mouseleave', function() {
+            el.style.setProperty('--mx', '50%');
+            el.style.setProperty('--my', '50%');
+          });
+        }
+
+        var heroInfo = document.querySelector('.hero-info');
+        if (heroInfo) attachLiquidGlass(heroInfo);
+
+        // Also apply to pub-entry cards (loaded after page renders)
+        function attachPubCards() {
+          document.querySelectorAll('.pub-entry').forEach(function(card) {
+            attachLiquidGlass(card);
+          });
+        }
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', attachPubCards);
+        } else {
+          attachPubCards();
+        }
+
+        // Apply subtle liquid distortion to photo-nav-btns on hover
+        document.querySelectorAll('.photo-nav-btn').forEach(function(btn) {
+          btn.addEventListener('mouseenter', function() {
+            btn.style.filter = 'url(#lg-btn-filter)';
+          });
+          btn.addEventListener('mouseleave', function() {
+            btn.style.filter = '';
+          });
+        });
+      })();
 
       document.addEventListener('keydown', function (e) {
         if (!bgLightboxOverlay.classList.contains('active')) {

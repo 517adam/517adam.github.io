@@ -7,23 +7,56 @@
    ========================================================================== */
 
 .btn {
-  /* default button */
+  /* Liquid glass button */
   display: inline-block;
   margin-bottom: 0.25em;
-  padding: 0.5em 1em;
-  color: #fff !important;
+  padding: 0.5em 1.1em;
+  color: var(--global-text-color) !important;
   font-family: $sans-serif;
   font-size: $type-size-6;
   font-weight: bold;
   text-align: center;
   text-decoration: none;
-  background-color: var(--global-base-color);
-  border: 0 !important;
-  border-radius: $border-radius;
+  background: rgba(255, 255, 255, 0.48) !important;
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  border: 1px solid rgba(0, 0, 0, 0.12) !important;
+  border-radius: 100px;
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.05);
+  transition: all 0.22s ease;
 
   &:hover {
-    background-color: mix(white, #000, 20%);
+    background: rgba(255, 255, 255, 0.75) !important;
+    border-color: rgba(0, 0, 0, 0.18) !important;
+    color: var(--global-text-color) !important;
+    transform: translateY(-1px);
+    box-shadow:
+      0 4px 16px rgba(0, 0, 0, 0.14),
+      inset 0 1px 0 rgba(255, 255, 255, 1),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.07);
+  }
+
+  /* Dark theme overrides */
+  html[data-theme="dark"] & {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(255, 255, 255, 0.18) !important;
+    color: #d8e0eb !important;
+    box-shadow:
+      0 2px 8px rgba(0, 0, 0, 0.35),
+      inset 0 1px 0 rgba(255, 255, 255, 0.12),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.15) !important;
+      border-color: rgba(255, 255, 255, 0.28) !important;
+      color: #eef2f8 !important;
+    }
   }
 
   .icon {
@@ -48,60 +81,71 @@
   /* for dark backgrounds */
 
   &--inverse {
-    color: var(--global-text-color-light) !important;
-    border: 1px solid var(--global-border-color) !important; /* override*/
-    background-color: var(--global-bg-color);
+    color: var(--global-text-color) !important;
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    background: rgba(255, 255, 255, 0.12) !important;
+    backdrop-filter: blur(14px) saturate(160%);
+    -webkit-backdrop-filter: blur(14px) saturate(160%);
 
     &:hover {
-      color: #fff !important;
-      border-color: var(--global-text-color-light);
+      background: rgba(255, 255, 255, 0.22) !important;
+      border-color: rgba(255, 255, 255, 0.7) !important;
     }
   }
 
   /* light outline */
 
   &--light-outline {
-    border: 1px solid #fff !important; /* override*/
-    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.55) !important;
+    background: rgba(255, 255, 255, 0.07) !important;
+    color: #fff !important;
   }
 
   /* information */
 
   &--info {
-    background-color: $info-color;
+    background: rgba(mix(#fff, $info-color, 80%), 0.6) !important;
+    border-color: rgba($info-color, 0.45) !important;
+    color: darken($info-color, 20%) !important;
 
     &:hover {
-      background-color: mix(#000, $info-color, 20%);
+      background: rgba(mix(#fff, $info-color, 65%), 0.8) !important;
     }
   }
 
   /* warning */
 
   &--warning {
-    background-color: $warning-color;
+    background: rgba(mix(#fff, $warning-color, 80%), 0.6) !important;
+    border-color: rgba($warning-color, 0.45) !important;
+    color: darken($warning-color, 25%) !important;
 
     &:hover {
-      background-color: mix(#000, $warning-color, 20%);
+      background: rgba(mix(#fff, $warning-color, 65%), 0.8) !important;
     }
   }
 
   /* success */
 
   &--success {
-    background-color: $success-color;
+    background: rgba(mix(#fff, $success-color, 80%), 0.6) !important;
+    border-color: rgba($success-color, 0.45) !important;
+    color: darken($success-color, 25%) !important;
 
     &:hover {
-      background-color: mix(#000, $success-color, 20%);
+      background: rgba(mix(#fff, $success-color, 65%), 0.8) !important;
     }
   }
 
   /* danger */
 
   &--danger {
-    background-color: $danger-color;
+    background: rgba(mix(#fff, $danger-color, 80%), 0.6) !important;
+    border-color: rgba($danger-color, 0.45) !important;
+    color: darken($danger-color, 20%) !important;
 
     &:hover {
-      background-color: mix(#000, $danger-color, 20%);
+      background: rgba(mix(#fff, $danger-color, 65%), 0.8) !important;
     }
   }
 
@@ -127,10 +171,12 @@
 
   @each $socialnetwork, $color in $social {
     &--#{$socialnetwork} {
-      background-color: $color;
+      background: rgba(mix(#fff, $color, 75%), 0.6) !important;
+      border-color: rgba($color, 0.5) !important;
+      color: darken($color, 18%) !important;
 
       &:hover {
-        background-color: mix(#000, $color, 20%);
+        background: rgba(mix(#fff, $color, 60%), 0.8) !important;
       }
     }
   }
